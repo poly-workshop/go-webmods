@@ -1,0 +1,7 @@
+{
+  "go.testFlags": ["-v", "-count=1"],
+  "[markdown]": {
+    "editor.formatOnSave": true,
+    "editor.formatOnPaste": true
+  }
+}
