@@ -1,7 +1,6 @@
 package app
 
 import (
-	"os"
 	"strings"
 
 	"github.com/spf13/viper"
@@ -29,7 +28,7 @@ func initConfig(configPath string) {
 		}
 	}
 
-	viper.SetConfigName(os.Getenv(mode))
+	viper.SetConfigName(mode)
 	err = viper.MergeInConfig()
 	if err != nil {
 		if _, ok := err.(viper.ConfigFileNotFoundError); !ok {
