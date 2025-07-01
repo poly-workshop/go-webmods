@@ -81,14 +81,14 @@ func TestWithLogFields(t *testing.T) {
 
 			// Set initial fields if any
 			if tt.initial != nil {
-				ctx = WithLogFields(ctx, tt.initial...)
+				ctx = WithLogAttrs(ctx, tt.initial...)
 			}
 
 			// Add new fields
-			ctx = WithLogFields(ctx, tt.add...)
+			ctx = WithLogAttrs(ctx, tt.add...)
 
 			// Get fields from context
-			attrs, ok := ctx.Value(ctxKeyLogFields).([]slog.Attr)
+			attrs, ok := ctx.Value(logAttrsKey).([]slog.Attr)
 			if !ok {
 				t.Fatal("Failed to get log fields from context")
 			}
@@ -149,7 +149,7 @@ func TestLogHandler(t *testing.T) {
 	}
 
 	// Test context with fields
-	ctx := WithLogFields(context.Background(),
+	ctx := WithLogAttrs(context.Background(),
 		slog.String("test_key", "test_value"),
 		slog.Int("test_number", 42),
 	)
