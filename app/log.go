@@ -8,6 +8,9 @@ import (
 	"github.com/lmittmann/tint"
 )
 
+
+type contextKey string
+
 const (
 	configKeyLogLevel  = "log.level"
 	configKeyLogFormat = "log.format"
@@ -15,6 +18,8 @@ const (
 	logFormatJSON      = "json"
 	logFormatPlainText = "plain-text"
 	logFormatTint      = "tint"
+
+	CtxKeyLogFields contextKey = "log_fields"
 )
 
 func stringToSlogLevel(
@@ -38,12 +43,27 @@ type logHandler struct {
 	slog.Handler
 }
 
+func WithLogFields(ctx context.Context, attrs ...slog.Attr) context.Context {
+	existingAttrs, ok := ctx.Value(CtxKeyLogFields).([]slog.Attr)
+	if !ok {
+		existingAttrs = []slog.Attr{}
+	}
+	return context.WithValue(ctx, CtxKeyLogFields, append(existingAttrs, attrs...))
+}
+
 func (h *logHandler) Handle(ctx context.Context, r slog.Record) error {
 	if cmdName != "" {
 		r.AddAttrs(slog.String("cmd", cmdName))
 	}
 	if hostname != "" {
 		r.AddAttrs(slog.String("hostname", hostname))
+	}
+
+	// Add log fields from context
+	if attrs, ok := ctx.Value(CtxKeyLogFields).([]slog.Attr); ok {
+		for _, v := range attrs {
+			r.AddAttrs(v)
+		}
 	}
 	return h.Handler.Handle(ctx, r)
 }
