@@ -88,7 +88,7 @@ func TestWithLogFields(t *testing.T) {
 			ctx = WithLogFields(ctx, tt.add...)
 
 			// Get fields from context
-			attrs, ok := ctx.Value(CtxKeyLogFields).([]slog.Attr)
+			attrs, ok := ctx.Value(ctxKeyLogFields).([]slog.Attr)
 			if !ok {
 				t.Fatal("Failed to get log fields from context")
 			}

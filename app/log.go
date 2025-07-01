@@ -19,7 +19,7 @@ const (
 	logFormatPlainText = "plain-text"
 	logFormatTint      = "tint"
 
-	CtxKeyLogFields contextKey = "log_fields"
+	ctxKeyLogFields contextKey = "log_fields"
 )
 
 func stringToSlogLevel(
@@ -44,11 +44,11 @@ type logHandler struct {
 }
 
 func WithLogFields(ctx context.Context, attrs ...slog.Attr) context.Context {
-	existingAttrs, ok := ctx.Value(CtxKeyLogFields).([]slog.Attr)
+	existingAttrs, ok := ctx.Value(ctxKeyLogFields).([]slog.Attr)
 	if !ok {
 		existingAttrs = []slog.Attr{}
 	}
-	return context.WithValue(ctx, CtxKeyLogFields, append(existingAttrs, attrs...))
+	return context.WithValue(ctx, ctxKeyLogFields, append(existingAttrs, attrs...))
 }
 
 func (h *logHandler) Handle(ctx context.Context, r slog.Record) error {
@@ -60,7 +60,7 @@ func (h *logHandler) Handle(ctx context.Context, r slog.Record) error {
 	}
 
 	// Add log fields from context
-	if attrs, ok := ctx.Value(CtxKeyLogFields).([]slog.Attr); ok {
+	if attrs, ok := ctx.Value(ctxKeyLogFields).([]slog.Attr); ok {
 		for _, v := range attrs {
 			r.AddAttrs(v)
 		}
