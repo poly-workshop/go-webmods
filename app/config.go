@@ -36,6 +36,6 @@ func initConfig(configPath string) {
 		}
 	}
 	viper.AutomaticEnv()
-	viper.SetEnvKeyReplacer(strings.NewReplacer(".", "_"))
+	viper.SetEnvKeyReplacer(strings.NewReplacer(".", "__"))
 	config = viper.GetViper()
 }
