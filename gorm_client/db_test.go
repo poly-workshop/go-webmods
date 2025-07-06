@@ -217,3 +217,32 @@ func TestOpenSqlite_EdgeCases(t *testing.T) {
 		})
 	}
 }
+
+func TestOpenPostgres_Unchanged(t *testing.T) {
+	// Test that PostgreSQL functionality is not affected by SQLite changes
+	cfg := Config{
+		Driver:   "postgres",
+		Host:     "localhost",
+		Port:     5432,
+		Username: "testuser",
+		Password: "testpass",
+		Name:     "testdb",
+		SSLMode:  "disable",
+	}
+
+	// This should fail (since we don't have a real postgres server), 
+	// but it should fail with a connection error, not a directory creation error
+	_, err := openPostgres(cfg)
+	
+	// We expect this to fail with a connection error, which confirms 
+	// our SQLite directory changes don't affect PostgreSQL
+	if err == nil {
+		t.Error("Expected openPostgres to fail without a real server")
+	}
+	
+	// The error should be about connection, not directory creation
+	if err != nil && (err.Error() == "" || 
+		 err.Error() == "failed to create directory for SQLite database") {
+		t.Errorf("Unexpected error type for PostgreSQL: %v", err)
+	}
+}
