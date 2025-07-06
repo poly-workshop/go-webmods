@@ -2,6 +2,8 @@ package gorm_client
 
 import (
 	"fmt"
+	"os"
+	"path/filepath"
 
 	"gorm.io/driver/postgres"
 	"gorm.io/driver/sqlite"
@@ -56,7 +58,15 @@ func openPostgres(cfg Config) (db *gorm.DB, err error) {
 }
 
 func openSqlite(cfg Config) (db *gorm.DB, err error) {
-	db, err = gorm.Open(sqlite.Open(cfg.Name))
+	// Ensure directory exists for SQLite database file
+	dbPath := cfg.Name
+	if dir := filepath.Dir(dbPath); dir != "." {
+		if err := os.MkdirAll(dir, 0755); err != nil {
+			return nil, fmt.Errorf("failed to create directory for SQLite database: %w", err)
+		}
+	}
+	
+	db, err = gorm.Open(sqlite.Open(dbPath))
 	if err != nil {
 		return nil, err
 	}
