@@ -5,6 +5,7 @@ import (
 	"log/slog"
 	"os"
 
+	"github.com/grpc-ecosystem/go-grpc-middleware/v2/interceptors/logging"
 	"github.com/lmittmann/tint"
 )
 
@@ -58,12 +59,26 @@ func (h *logHandler) Handle(ctx context.Context, r slog.Record) error {
 		r.AddAttrs(slog.String("hostname", hostname))
 	}
 
-	// Add log fields from context
+	// Add log fields from context (app-specific)
 	if attrs, ok := ctx.Value(logAttrsKey).([]slog.Attr); ok {
 		for _, v := range attrs {
 			r.AddAttrs(v)
 		}
 	}
+
+	// Add log fields from go-grpc-middleware context
+	if grpcFields := logging.ExtractFields(ctx); len(grpcFields) > 0 {
+		for i := 0; i < len(grpcFields); i += 2 {
+			if i+1 < len(grpcFields) {
+				key, ok := grpcFields[i].(string)
+				if ok {
+					value := grpcFields[i+1]
+					r.AddAttrs(slog.Any(key, value))
+				}
+			}
+		}
+	}
+
 	return h.Handler.Handle(ctx, r)
 }
 
