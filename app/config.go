@@ -10,9 +10,7 @@ const (
 	defaultConfigName = "default"
 )
 
-var (
-	config *viper.Viper
-)
+var config *viper.Viper
 
 func Config() *viper.Viper {
 	return config

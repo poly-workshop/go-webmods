@@ -109,7 +109,13 @@ func TestWithLogFields(t *testing.T) {
 					t.Errorf("Field %d: expected key %q, got %q", i, want.Key, got.Key)
 				}
 				if !compareAttrValues(got.Value, want.Value) {
-					t.Errorf("Field %d (%s): expected value %v, got %v", i, got.Key, want.Value, got.Value)
+					t.Errorf(
+						"Field %d (%s): expected value %v, got %v",
+						i,
+						got.Key,
+						want.Value,
+						got.Value,
+					)
 				}
 			}
 		})

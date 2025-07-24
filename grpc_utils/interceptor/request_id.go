@@ -10,7 +10,12 @@ import (
 )
 
 // RequestIDInterceptor is a unary server interceptor that adds a request ID to the context and logs
-func RequestIDInterceptor(ctx context.Context, req any, info *grpc.UnaryServerInfo, handler grpc.UnaryHandler) (any, error) {
+func RequestIDInterceptor(
+	ctx context.Context,
+	req any,
+	info *grpc.UnaryServerInfo,
+	handler grpc.UnaryHandler,
+) (any, error) {
 	requestID := uuid.New().String()
 	ctx = app.WithLogAttrs(ctx, slog.String("request_id", requestID))
 	return handler(ctx, req)
