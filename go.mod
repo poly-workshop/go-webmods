@@ -8,6 +8,7 @@ require (
 	github.com/lmittmann/tint v1.1.2
 	github.com/redis/go-redis/v9 v9.10.0
 	github.com/spf13/viper v1.20.1
+	github.com/volcengine/ve-tos-golang-sdk/v2 v2.7.18
 	google.golang.org/grpc v1.73.0
 	gorm.io/driver/postgres v1.6.0
 	gorm.io/driver/sqlite v1.6.0
