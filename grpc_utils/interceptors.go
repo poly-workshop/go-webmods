@@ -1,14 +1,24 @@
-package interceptor
+package grpcutils
 
 import (
 	"context"
 	"log/slog"
 
 	"github.com/google/uuid"
+	"github.com/grpc-ecosystem/go-grpc-middleware/v2/interceptors/logging"
 	"github.com/oj-lab/go-webmods/app"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/metadata"
 )
+
+// Creates a gRPC interceptor that logs messages using the provided slog.Logger.
+func BuildLogInterceptor(l *slog.Logger) grpc.UnaryServerInterceptor {
+	return logging.UnaryServerInterceptor(logging.LoggerFunc(
+		func(ctx context.Context, lvl logging.Level, msg string, fields ...any) {
+			l.Log(ctx, slog.Level(lvl), msg, fields...)
+		},
+	))
+}
 
 // Creates a gRPC interceptor that adds a unique request ID to the context.
 func BuildRequestIDInterceptor() grpc.UnaryServerInterceptor {
