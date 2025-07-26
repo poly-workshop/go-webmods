@@ -26,6 +26,8 @@ type ProviderConfig struct {
 
 func NewObjectStorage(cfg Config) (ObjectStorage, error) {
 	switch cfg.ProviderType {
+	case ProviderLocal:
+		return NewLocalObjectStorage(cfg.ProviderConfig)
 	case ProviderVolcengine:
 		return NewTOSObjectStorage(cfg.ProviderConfig)
 	default:
