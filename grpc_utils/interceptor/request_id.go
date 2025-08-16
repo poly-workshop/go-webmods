@@ -5,7 +5,7 @@ import (
 	"log/slog"
 
 	"github.com/google/uuid"
-	app "github.com/oj-lab/go-webmods/app"
+	app "github.com/poly-workshop/go-webmods/app"
 	"google.golang.org/grpc"
 )
 
