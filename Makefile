@@ -1,7 +1,6 @@
 .PHONY: fmt lint
 
 fmt:
-	@golines -w .
 	@gofumpt -w .
 
 lint:
