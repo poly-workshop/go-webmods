@@ -7,6 +7,7 @@ type ProviderType string
 const (
 	ProviderLocal      ProviderType = "local"
 	ProviderVolcengine ProviderType = "volcengine"
+	ProviderMinio      ProviderType = "minio"
 )
 
 type Config struct {
@@ -30,6 +31,8 @@ func NewObjectStorage(cfg Config) (ObjectStorage, error) {
 		return NewLocalObjectStorage(cfg.ProviderConfig)
 	case ProviderVolcengine:
 		return NewTOSObjectStorage(cfg.ProviderConfig)
+	case ProviderMinio:
+		return NewMinioObjectStorage(cfg.ProviderConfig)
 	default:
 		return nil, fmt.Errorf("unsupported object storage provider: %s", cfg.ProviderType)
 	}
