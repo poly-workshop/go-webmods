@@ -70,3 +70,36 @@ func TestNewObjectStorageUnsupportedProvider(t *testing.T) {
 		t.Fatalf("Expected error %q, got %q", expectedError, err.Error())
 	}
 }
+
+func TestNewObjectStorageMinio(t *testing.T) {
+	// Test creating MinIO object storage through the factory function
+	config := Config{
+		ProviderType: ProviderMinio,
+		ProviderConfig: ProviderConfig{
+			Endpoint:  "localhost:9000",
+			AccessKey: "minioadmin",
+			SecretKey: "minioadmin",
+			Bucket:    "test-bucket",
+			BasePath:  "test",
+		},
+	}
+
+	storage, err := NewObjectStorage(config)
+	if err != nil {
+		t.Fatalf("Failed to create MinIO object storage: %v", err)
+	}
+
+	// Test that it's actually a MinioObjectStorage
+	minioStorage, ok := storage.(*MinioObjectStorage)
+	if !ok {
+		t.Fatalf("Expected MinioObjectStorage, got %T", storage)
+	}
+
+	// Verify configuration was set correctly
+	if minioStorage.bucket != "test-bucket" {
+		t.Fatalf("Expected bucket 'test-bucket', got %q", minioStorage.bucket)
+	}
+	if minioStorage.basePath != "test" {
+		t.Fatalf("Expected basePath 'test', got %q", minioStorage.basePath)
+	}
+}
