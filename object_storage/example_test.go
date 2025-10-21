@@ -34,7 +34,9 @@ func Example() {
 	if err != nil {
 		panic(err)
 	}
-	defer obj.Close()
+	defer func() {
+		_ = obj.Close()
+	}()
 
 	data, err := io.ReadAll(obj)
 	if err != nil {
@@ -81,8 +83,8 @@ func Example_list() {
 	}
 
 	// Save some files
-	storage.Save("photos/photo1.jpg", bytes.NewReader([]byte("photo1")))
-	storage.Save("photos/photo2.jpg", bytes.NewReader([]byte("photo2")))
+	_, _ = storage.Save("photos/photo1.jpg", bytes.NewReader([]byte("photo1")))
+	_, _ = storage.Save("photos/photo2.jpg", bytes.NewReader([]byte("photo2")))
 
 	// List files in directory
 	objects, err := storage.List("photos/")
@@ -110,7 +112,7 @@ func Example_stat() {
 	}
 
 	// Save a file
-	storage.Save("document.pdf", bytes.NewReader([]byte("PDF content")))
+	_, _ = storage.Save("document.pdf", bytes.NewReader([]byte("PDF content")))
 
 	// Get file info
 	info, err := storage.Stat("document.pdf")
@@ -136,7 +138,7 @@ func Example_delete() {
 	}
 
 	// Save a file
-	storage.Save("temp.txt", bytes.NewReader([]byte("temporary")))
+	_, _ = storage.Save("temp.txt", bytes.NewReader([]byte("temporary")))
 
 	// Delete the file
 	err = storage.Delete("temp.txt")

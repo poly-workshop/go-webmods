@@ -48,8 +48,6 @@ func Example() {
 // Example_requestIDPropagation demonstrates how request IDs propagate through the system.
 func Example_requestIDPropagation() {
 	// In your gRPC handler
-	type server struct{}
-
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		// The request ID is automatically added to the context by the interceptor
 		// Add additional context
