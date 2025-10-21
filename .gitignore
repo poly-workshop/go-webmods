@@ -1,0 +1,26 @@
+# Test binaries
+*.test
+
+# Build artifacts
+*.exe
+*.out
+bin/
+dist/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Dependencies
+vendor/
+
+# Temporary files
+tmp/
+temp/
