@@ -64,6 +64,12 @@ Database client factory supporting:
 - SQLite
 - Connection pooling configuration
 
+### [mongo_client](https://pkg.go.dev/github.com/poly-workshop/go-webmods/mongo_client)
+MongoDB client factory using the v2 driver:
+- MongoDB Atlas support
+- Connection pooling and timeouts
+- Ping verification on startup
+
 ### [redis_client](https://pkg.go.dev/github.com/poly-workshop/go-webmods/redis_client)
 Redis client with:
 - Single-node and cluster mode support
