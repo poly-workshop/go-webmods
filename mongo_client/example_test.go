@@ -6,7 +6,7 @@ import (
 	_ "github.com/poly-workshop/go-webmods/mongo_client"
 )
 
-// Example demonstrates creating a MongoDB client connection.
+// Example demonstrates creating a MongoDB client connection with explicit lifecycle management.
 func Example() {
 	// import "github.com/poly-workshop/go-webmods/mongo_client"
 	// import "context"
@@ -17,23 +17,25 @@ func Example() {
 	// })
 	// defer client.Disconnect(context.Background())
 	//
-	// // Use the client connection
-	// _ = client
+	// // Access the database
+	// db := client.Database("mydb")
+	// _ = db
 
 	fmt.Println("MongoDB client connected")
 	// Output: MongoDB client connected
 }
 
-// Example_database demonstrates creating a MongoDB database directly.
+// Example_database demonstrates creating a MongoDB database for long-running applications.
 func Example_database() {
 	// import "github.com/poly-workshop/go-webmods/mongo_client"
 	//
+	// // For long-running applications (servers, daemons)
 	// db := mongo_client.NewDatabase(mongo_client.Config{
 	// 	URI:      "mongodb://localhost:27017",
 	// 	Database: "mydb",
 	// })
 	//
-	// // Use the database connection
+	// // The client remains connected for the application lifetime
 	// _ = db
 
 	fmt.Println("MongoDB database connected")

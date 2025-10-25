@@ -45,6 +45,14 @@ func NewClient(cfg Config) *mongo.Client {
 	return client
 }
 
+// NewDatabase creates a new MongoDB database connection.
+// Note: This function returns only the database reference. The underlying client
+// connection will remain open for the lifetime of the application. This is the
+// intended usage for long-running applications (servers, daemons).
+//
+// If you need to explicitly manage the client lifecycle (e.g., for short-lived
+// scripts or need to call Disconnect), use NewClient instead and access the
+// database via client.Database(name).
 func NewDatabase(cfg Config) *mongo.Database {
 	client := NewClient(cfg)
 	return client.Database(cfg.Database)

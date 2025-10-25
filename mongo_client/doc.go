@@ -3,7 +3,7 @@
 //
 // # Basic Usage
 //
-// Create a MongoDB client:
+// Create a MongoDB client (recommended when you need explicit lifecycle management):
 //
 //	import "github.com/poly-workshop/go-webmods/mongo_client"
 //
@@ -13,12 +13,17 @@
 //	})
 //	defer client.Disconnect(context.Background())
 //
-// Create a MongoDB database directly:
+//	// Access the database
+//	db := client.Database("mydb")
+//
+// Create a MongoDB database directly (for long-running applications):
 //
 //	db := mongo_client.NewDatabase(mongo_client.Config{
 //	    URI:      "mongodb://localhost:27017",
 //	    Database: "mydb",
 //	})
+//	// Note: The client remains connected for the application lifetime.
+//	// This is appropriate for servers and daemons.
 //
 // # Using with Viper Configuration
 //
