@@ -61,6 +61,7 @@ Core application utilities including:
 ### [gorm_client](https://pkg.go.dev/github.com/poly-workshop/go-webmods/gorm_client)
 Database client factory supporting:
 - PostgreSQL
+- MySQL
 - SQLite
 - Connection pooling configuration
 

@@ -5,6 +5,7 @@ import (
 	"os"
 	"path/filepath"
 
+	"gorm.io/driver/mysql"
 	"gorm.io/driver/postgres"
 	"gorm.io/driver/sqlite"
 	"gorm.io/gorm"
@@ -25,6 +26,12 @@ func NewDB(cfg Config) *gorm.DB {
 	switch driver {
 	case "postgres":
 		db, err := openPostgres(cfg)
+		if err != nil {
+			panic(err)
+		}
+		return db
+	case "mysql":
+		db, err := openMysql(cfg)
 		if err != nil {
 			panic(err)
 		}
@@ -51,6 +58,22 @@ func openPostgres(cfg Config) (db *gorm.DB, err error) {
 		cfg.SSLMode,
 	)
 	db, err = gorm.Open(postgres.Open(dsn))
+	if err != nil {
+		return nil, err
+	}
+	return db, nil
+}
+
+func openMysql(cfg Config) (db *gorm.DB, err error) {
+	dsn := fmt.Sprintf(
+		"%s:%s@tcp(%s:%d)/%s?charset=utf8mb4&parseTime=True&loc=Local",
+		cfg.Username,
+		cfg.Password,
+		cfg.Host,
+		cfg.Port,
+		cfg.Name,
+	)
+	db, err = gorm.Open(mysql.Open(dsn))
 	if err != nil {
 		return nil, err
 	}
