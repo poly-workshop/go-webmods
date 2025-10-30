@@ -43,6 +43,26 @@ func Example_sqlite() {
 	// Output: SQLite database connected
 }
 
+// Example_mysql demonstrates creating a MySQL database connection.
+func Example_mysql() {
+	// import "github.com/poly-workshop/go-webmods/gorm_client"
+	//
+	// db := gorm_client.NewDB(gorm_client.Config{
+	// 	Driver:   "mysql",
+	// 	Host:     "localhost",
+	// 	Port:     3306,
+	// 	Username: "user",
+	// 	Password: "password",
+	// 	Name:     "mydb",
+	// })
+	//
+	// // Use the database connection
+	// _ = db
+
+	fmt.Println("MySQL database connected")
+	// Output: MySQL database connected
+}
+
 // Example_withConfig demonstrates using configuration to create a database connection.
 func Example_withConfig() {
 	// In a real application, you would load these from app.Config()

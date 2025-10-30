@@ -12,9 +12,15 @@ require (
 	github.com/spf13/viper v1.20.1
 	github.com/volcengine/ve-tos-golang-sdk/v2 v2.7.21
 	google.golang.org/grpc v1.74.2
+	gorm.io/driver/mysql v1.6.0
 	gorm.io/driver/postgres v1.6.0
 	gorm.io/driver/sqlite v1.6.0
 	gorm.io/gorm v1.30.1
+)
+
+require (
+	filippo.io/edwards25519 v1.1.0 // indirect
+	github.com/go-sql-driver/mysql v1.8.1 // indirect
 )
 
 require (
