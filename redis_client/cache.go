@@ -103,10 +103,8 @@ func NewCache(cfg CacheConfig) *Cache {
 		for {
 			select {
 			case msg := <-ch:
-				if msg.Payload == refreshEventChannel {
-					slog.Info("Cache refresh event received", "key", msg.Payload)
-					cacheInstance.DeleteFromLocalCache(msg.Payload)
-				}
+				slog.Info("Cache refresh event received", "key", msg.Payload)
+				cacheInstance.DeleteFromLocalCache(msg.Payload)
 			case <-ctx.Done():
 				return
 			}
