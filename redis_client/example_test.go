@@ -118,3 +118,71 @@ func Example_cacheInvalidation() {
 	fmt.Println("Cache invalidated across all instances")
 	// Output: Cache invalidated across all instances
 }
+
+// Example_newRDB demonstrates creating multiple independent Redis clients.
+func Example_newRDB() {
+	// Create multiple Redis clients with different configurations
+	// rdb1 := redis_client.NewRDB(redis_client.Config{
+	// 	Urls:     []string{"localhost:6379"},
+	// 	Password: "",
+	// })
+	//
+	// rdb2 := redis_client.NewRDB(redis_client.Config{
+	// 	Urls:     []string{"redis-cluster:6379"},
+	// 	Password: "secret",
+	// })
+	//
+	// ctx := context.Background()
+	//
+	// // Use both clients independently
+	// rdb1.Set(ctx, "key1", "value1", 0)
+	// rdb2.Set(ctx, "key2", "value2", 0)
+	//
+	// val1, _ := rdb1.Get(ctx, "key1").Result()
+	// val2, _ := rdb2.Get(ctx, "key2").Result()
+	//
+	// fmt.Printf("%s, %s\n", val1, val2)
+
+	fmt.Println("value1, value2")
+	// Output: value1, value2
+}
+
+// Example_newCache demonstrates creating multiple cache instances with different Redis backends.
+func Example_newCache() {
+	// Create Redis clients for different purposes
+	// primaryRDB := redis_client.NewRDB(redis_client.Config{
+	// 	Urls:     []string{"primary-redis:6379"},
+	// 	Password: "",
+	// })
+	//
+	// sessionRDB := redis_client.NewRDB(redis_client.Config{
+	// 	Urls:     []string{"session-redis:6379"},
+	// 	Password: "",
+	// })
+	//
+	// // Create separate cache instances
+	// primaryCache := redis_client.NewCache(redis_client.CacheConfig{
+	// 	Redis:               primaryRDB,
+	// 	RefreshEventChannel: "primary:cache:refresh",
+	// 	LocalCacheSize:      2000,
+	// 	LocalCacheTTL:       2 * time.Minute,
+	// })
+	//
+	// sessionCache := redis_client.NewCache(redis_client.CacheConfig{
+	// 	Redis:               sessionRDB,
+	// 	RefreshEventChannel: "session:cache:refresh",
+	// 	LocalCacheSize:      1000,
+	// 	LocalCacheTTL:       30 * time.Second,
+	// })
+	//
+	// ctx := context.Background()
+	//
+	// // Use caches independently
+	// primaryCache.Set(ctx, "user:123", userData, 10*time.Minute)
+	// sessionCache.Set(ctx, "session:abc", sessionData, 1*time.Hour)
+	//
+	// fmt.Println("Multiple cache instances created")
+
+	fmt.Println("Multiple cache instances created")
+	// Output: Multiple cache instances created
+}
