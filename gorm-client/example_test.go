@@ -3,7 +3,7 @@ package gorm_client_test
 import (
 	"fmt"
 
-	_ "github.com/poly-workshop/go-webmods/gorm_client"
+	_ "github.com/poly-workshop/go-webmods/gorm-client"
 )
 
 // Example demonstrates creating a PostgreSQL database connection.

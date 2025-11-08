@@ -7,7 +7,7 @@ import (
 	"net"
 
 	"github.com/poly-workshop/go-webmods/app"
-	"github.com/poly-workshop/go-webmods/grpc_utils"
+	grpc_utils "github.com/poly-workshop/go-webmods/grpc-utils"
 	"google.golang.org/grpc"
 )
 

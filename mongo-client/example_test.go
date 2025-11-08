@@ -3,7 +3,7 @@ package mongo_client_test
 import (
 	"fmt"
 
-	_ "github.com/poly-workshop/go-webmods/mongo_client"
+	_ "github.com/poly-workshop/go-webmods/mongo-client"
 )
 
 // Example demonstrates creating a MongoDB client connection with explicit lifecycle management.

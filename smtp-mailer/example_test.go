@@ -3,7 +3,7 @@ package smtp_mailer_test
 import (
 	"fmt"
 
-	"github.com/poly-workshop/go-webmods/smtp_mailer"
+	smtp_mailer "github.com/poly-workshop/go-webmods/smtp-mailer"
 )
 
 // Example demonstrates basic email sending.

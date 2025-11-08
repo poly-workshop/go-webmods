@@ -3,7 +3,7 @@ package redis_client_test
 import (
 	"fmt"
 
-	_ "github.com/poly-workshop/go-webmods/redis_client"
+	_ "github.com/poly-workshop/go-webmods/redis-client"
 )
 
 // Example demonstrates basic Redis client usage.
