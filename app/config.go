@@ -1,6 +1,7 @@
 package app
 
 import (
+	"path"
 	"strings"
 
 	"github.com/spf13/viper"
@@ -18,6 +19,7 @@ func Config() *viper.Viper {
 
 func initConfig(configPath string) {
 	viper.AddConfigPath(configPath)
+
 	viper.SetConfigName(defaultConfigName)
 	err := viper.ReadInConfig()
 	if err != nil {
@@ -33,6 +35,23 @@ func initConfig(configPath string) {
 			panic(err)
 		}
 	}
+
+	viper.SetConfigName(path.Join(cmdName, defaultConfigName))
+	err = viper.ReadInConfig()
+	if err != nil {
+		if _, ok := err.(viper.ConfigFileNotFoundError); !ok {
+			panic(err)
+		}
+	}
+
+	viper.SetConfigName(path.Join(cmdName, mode))
+	err = viper.MergeInConfig()
+	if err != nil {
+		if _, ok := err.(viper.ConfigFileNotFoundError); !ok {
+			panic(err)
+		}
+	}
+
 	viper.AutomaticEnv()
 	viper.SetEnvKeyReplacer(strings.NewReplacer(".", "__"))
 	config = viper.GetViper()

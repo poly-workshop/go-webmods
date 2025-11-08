@@ -143,7 +143,7 @@ func compareAttrValues(got, want slog.Value) bool {
 
 func TestLogHandler(t *testing.T) {
 	// Setup test environment
-	SetCMDName("test_cmd")
+	cmdName = "test_cmd"
 	hostname, _ = os.Hostname()
 
 	// Create a buffer to capture output

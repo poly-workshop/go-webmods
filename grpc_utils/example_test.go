@@ -13,9 +13,8 @@ import (
 
 // Example demonstrates setting up a gRPC server with logging and request ID interceptors.
 func Example() {
-	// Initialize application
-	app.SetCMDName("grpc-server")
-	// app.Init(".")
+	// Initialize application with command name
+	// app.Init("grpc-server")
 
 	// Create logger
 	logger := slog.Default()

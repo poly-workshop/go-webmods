@@ -3,22 +3,36 @@
 //
 // # Configuration Management
 //
-// The package uses Viper to provide layered configuration from multiple sources:
-//   - default.yaml: Base configuration
-//   - {MODE}.yaml: Environment-specific overrides (development.yaml, production.yaml, etc.)
-//   - Environment variables: Final overrides using __ as separator (e.g., LOG__LEVEL)
+// The package uses Viper to provide layered configuration from multiple sources.
+// Configuration is loaded in the following priority order (highest priority last):
 //
-// Configuration files should be placed in a configs/ directory relative to the
-// working directory passed to Init().
+// 1. Global base: default.yaml
+// 2. Global environment: {MODE}.yaml (development.yaml, production.yaml, etc.)
+// 3. Command base: {cmdName}/default.yaml (replaces all previous config if exists)
+// 4. Command environment: {cmdName}/{MODE}.yaml (merges with command base)
+// 5. Environment variables: Final overrides using __ as separator (e.g., LOG__LEVEL)
+//
+// IMPORTANT: Command-specific default.yaml completely replaces global configuration
+// rather than merging with it. Use command-specific configs only when you need
+// completely different settings for specific commands.
+//
+// Configuration files should be placed in a configs/ directory. The Init() function
+// automatically looks for configs in the working directory, or you can specify a
+// custom path with InitWithConfigPath().
 //
 // Example config structure:
 //
-//	workdir/
-//	├── configs/
-//	│   ├── default.yaml
-//	│   ├── development.yaml
-//	│   └── production.yaml
-//	└── main.go
+//	configs/
+//	├── default.yaml              # Global defaults
+//	├── development.yaml          # Global development overrides
+//	├── production.yaml           # Global production overrides
+//	├── myapp/
+//	│   ├── default.yaml          # App-specific config (replaces global!)
+//	│   ├── development.yaml      # App-specific development overrides
+//	│   └── production.yaml       # App-specific production overrides
+//	└── worker/
+//	    ├── default.yaml          # Worker-specific config (replaces global!)
+//	    └── production.yaml       # Worker-specific production overrides
 //
 // Example default.yaml:
 //
@@ -32,18 +46,26 @@
 //
 // # Initialization
 //
-// Initialize the application at startup:
+// Initialize the application at startup with one of two methods:
 //
 //	func main() {
-//	    app.SetCMDName("myapp")  // Optional: sets command name in logs
-//	    app.Init(".")            // Loads config from ./configs/
+//	    // Method 1: Auto-detect config path from working directory
+//	    app.Init("myapp")                    // Loads config from ./configs/
+//
+//	    // Method 2: Specify custom config path
+//	    app.InitWithConfigPath("myapp", "/etc/myapp/configs")
 //	    // ... rest of application
 //	}
 //
+// The command name passed to Init() functions serves multiple purposes:
+//   - Appears in all log messages as the "cmd" field
+//   - Used to find command-specific configuration files
+//   - Helps identify different services/commands in logs
+//
 // The MODE environment variable controls which config file is loaded:
 //
-//	export MODE=production  # Loads production.yaml
-//	export MODE=development # Loads development.yaml (default)
+//	export MODE=production  # Loads production.yaml + myapp/production.yaml
+//	export MODE=development # Loads development.yaml + myapp/development.yaml (default)
 //
 // # Logging
 //
@@ -71,7 +93,7 @@
 //	slog.InfoContext(ctx, "Processing request") // Includes user_id and request_id
 //
 // All log messages automatically include:
-//   - cmd: Command name (if set via SetCMDName)
+//   - cmd: Command name (passed to Init functions)
 //   - hostname: Current hostname
 //   - Any attributes added to the context via WithLogAttrs
 //
@@ -91,8 +113,10 @@
 //
 // # Best Practices
 //
-//   - Call Init() once at application startup
-//   - Use SetCMDName() to identify different services/commands in logs
+//   - Call Init() or InitWithConfigPath() once at application startup
+//   - Use descriptive command names to identify different services/commands in logs
+//   - Use global configs for shared settings, command-specific configs sparingly
+//   - Remember that command-specific default.yaml replaces (not merges) global config
 //   - Add request/user context via WithLogAttrs for better traceability
 //   - Use structured logging (key-value pairs) instead of string formatting
 //   - Configure log format and level via config files, not hardcoded

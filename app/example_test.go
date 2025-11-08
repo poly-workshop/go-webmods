@@ -10,12 +10,9 @@ import (
 // Example demonstrates basic application initialization with configuration
 // and logging setup.
 func Example() {
-	// Set command name (appears in all logs)
-	app.SetCMDName("myapp")
-
-	// Initialize application (loads config from ./configs/)
+	// Initialize application with command name (loads config from ./configs/)
 	// Note: This would normally be called with a valid config directory
-	// app.Init(".")
+	// app.Init("myapp")
 
 	// Access configuration
 	// cfg := app.Config()
@@ -46,8 +43,8 @@ func Example_withLogAttrs() {
 // Example_configuration demonstrates accessing configuration values from
 // different sources (config files and environment variables).
 func Example_configuration() {
-	// Initialize application
-	// app.Init(".")
+	// Initialize application with command name
+	// app.Init("myapp")
 
 	// Get configuration
 	// cfg := app.Config()
@@ -73,4 +70,23 @@ func Example_configuration() {
 	// Environment variables override config files
 	// export DATABASE__HOST=prod-db  # Overrides database.host
 	// export LOG__LEVEL=debug        # Overrides log.level
+}
+
+// Example_customConfigPath demonstrates using a custom configuration directory
+// path instead of the default ./configs/ location.
+func Example_customConfigPath() {
+	// Initialize with custom config path
+	// app.InitWithConfigPath("worker", "/etc/myapp/configs")
+
+	// This will load configuration in the following order:
+	// 1. /etc/myapp/configs/default.yaml
+	// 2. /etc/myapp/configs/{MODE}.yaml (e.g., production.yaml)
+	// 3. /etc/myapp/configs/worker/default.yaml
+	// 4. /etc/myapp/configs/worker/{MODE}.yaml
+	// 5. Environment variables (highest priority)
+
+	// Access the merged configuration
+	// cfg := app.Config()
+	// workerThreads := cfg.GetInt("worker.threads")
+	// slog.Info("Worker initialized", "threads", workerThreads)
 }
