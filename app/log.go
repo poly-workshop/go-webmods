@@ -76,6 +76,7 @@ func initLog() {
 		handler = slog.NewJSONHandler(os.Stdout, &slog.HandlerOptions{Level: logLevel})
 	case logFormatPlainText:
 		handler = slog.NewTextHandler(os.Stdout, &slog.HandlerOptions{Level: logLevel})
+	case logFormatTint:
 	default:
 		handler = tint.NewHandler(os.Stdout, &tint.Options{Level: logLevel})
 	}
