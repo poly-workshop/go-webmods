@@ -9,6 +9,7 @@
 //   - app: Core application utilities for configuration, logging, and context management
 //   - gorm_client: Database client factory supporting PostgreSQL and SQLite
 //   - redis_client: Redis client with caching support and cluster mode
+//   - kafka_client: Kafka client factories for readers and writers
 //   - object_storage: Multi-provider object storage interface (local, MinIO, Volcengine TOS)
 //   - grpc_utils: gRPC middleware and interceptors for logging and request ID tracking
 //   - smtp_mailer: SMTP email sender with TLS support
