@@ -77,6 +77,11 @@ Redis client with:
 - Two-level caching (local + distributed)
 - Automatic cache invalidation via pub/sub
 
+### [kafka_client](https://pkg.go.dev/github.com/poly-workshop/go-webmods/kafka_client)
+Kafka client helpers with:
+- Reader factory (consumer group or partition)
+- Writer factory with configurable batching and acknowledgements
+
 ### [object_storage](https://pkg.go.dev/github.com/poly-workshop/go-webmods/object_storage)
 Unified object storage interface supporting:
 - Local filesystem
