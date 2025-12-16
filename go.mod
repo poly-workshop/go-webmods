@@ -8,8 +8,8 @@ require (
 	github.com/grpc-ecosystem/go-grpc-middleware/v2 v2.3.2
 	github.com/lmittmann/tint v1.1.2
 	github.com/oj-lab/go-webmods v0.1.4
-	github.com/segmentio/kafka-go v0.4.48
 	github.com/redis/go-redis/v9 v9.12.1
+	github.com/segmentio/kafka-go v0.4.48
 	github.com/spf13/viper v1.20.1
 	github.com/testcontainers/testcontainers-go v0.39.0
 	github.com/volcengine/ve-tos-golang-sdk/v2 v2.7.21

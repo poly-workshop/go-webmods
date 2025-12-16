@@ -16,7 +16,7 @@ type ReaderConfig struct {
 
 func NewReader(cfg ReaderConfig) *kafka.Reader {
 	if len(cfg.Brokers) == 0 {
-		panic("kafka_client: no Kafka brokers configured")
+		panic("kafka_client: no kafka brokers configured")
 	}
 	if cfg.Topic == "" {
 		panic("kafka_client: topic is required")
