@@ -28,16 +28,16 @@ func initConfig(configPath string) {
 		}
 	}
 
-	viper.SetConfigName(mode)
-	err = viper.MergeInConfig()
+	viper.SetConfigName(path.Join(cmdName, defaultConfigName))
+	err = viper.ReadInConfig()
 	if err != nil {
 		if _, ok := err.(viper.ConfigFileNotFoundError); !ok {
 			panic(err)
 		}
 	}
 
-	viper.SetConfigName(path.Join(cmdName, defaultConfigName))
-	err = viper.ReadInConfig()
+	viper.SetConfigName(mode)
+	err = viper.MergeInConfig()
 	if err != nil {
 		if _, ok := err.(viper.ConfigFileNotFoundError); !ok {
 			panic(err)
