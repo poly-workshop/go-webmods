@@ -1,4 +1,4 @@
-package gorm_client_test
+package gormclient_test
 
 import (
 	"fmt"
@@ -8,9 +8,9 @@ import (
 
 // Example demonstrates creating a PostgreSQL database connection.
 func Example() {
-	// import gorm_client "github.com/poly-workshop/go-webmods/gormclient"
+	// import gormclient "github.com/poly-workshop/go-webmods/gormclient"
 	//
-	// db := gorm_client.NewDB(gorm_client.Config{
+	// db := gormclient.NewDB(gormclient.Config{
 	// 	Driver:   "postgres",
 	// 	Host:     "localhost",
 	// 	Port:     5432,
@@ -29,9 +29,9 @@ func Example() {
 
 // Example_sqlite demonstrates creating a SQLite database connection.
 func Example_sqlite() {
-	// import gorm_client "github.com/poly-workshop/go-webmods/gormclient"
+	// import gormclient "github.com/poly-workshop/go-webmods/gormclient"
 	//
-	// db := gorm_client.NewDB(gorm_client.Config{
+	// db := gormclient.NewDB(gormclient.Config{
 	// 	Driver: "sqlite",
 	// 	Name:   "/tmp/test.db",
 	// })
@@ -45,9 +45,9 @@ func Example_sqlite() {
 
 // Example_mysql demonstrates creating a MySQL database connection.
 func Example_mysql() {
-	// import gorm_client "github.com/poly-workshop/go-webmods/gormclient"
+	// import gormclient "github.com/poly-workshop/go-webmods/gormclient"
 	//
-	// db := gorm_client.NewDB(gorm_client.Config{
+	// db := gormclient.NewDB(gormclient.Config{
 	// 	Driver:   "mysql",
 	// 	Host:     "localhost",
 	// 	Port:     3306,
@@ -67,12 +67,12 @@ func Example_mysql() {
 func Example_withConfig() {
 	// In a real application, you would load these from app.Config()
 	// import "github.com/poly-workshop/go-webmods/app"
-	// import gorm_client "github.com/poly-workshop/go-webmods/gormclient"
+	// import gormclient "github.com/poly-workshop/go-webmods/gormclient"
 	//
 	// app.Init(".")
 	// cfg := app.Config()
 	//
-	// db := gorm_client.NewDB(gorm_client.Config{
+	// db := gormclient.NewDB(gormclient.Config{
 	//     Driver:   cfg.GetString("database.driver"),
 	//     Host:     cfg.GetString("database.host"),
 	//     Port:     cfg.GetInt("database.port"),

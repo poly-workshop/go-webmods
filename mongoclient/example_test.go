@@ -1,4 +1,4 @@
-package mongo_client_test
+package mongoclient_test
 
 import (
 	"fmt"
@@ -8,10 +8,10 @@ import (
 
 // Example demonstrates creating a MongoDB client connection with explicit lifecycle management.
 func Example() {
-	// import mongo_client "github.com/poly-workshop/go-webmods/mongoclient"
+	// import mongoclient "github.com/poly-workshop/go-webmods/mongoclient"
 	// import "context"
 	//
-	// client := mongo_client.NewClient(mongo_client.Config{
+	// client := mongoclient.NewClient(mongoclient.Config{
 	// 	URI:      "mongodb://localhost:27017",
 	// 	Database: "mydb",
 	// })
@@ -27,10 +27,10 @@ func Example() {
 
 // Example_database demonstrates creating a MongoDB database for long-running applications.
 func Example_database() {
-	// import mongo_client "github.com/poly-workshop/go-webmods/mongoclient"
+	// import mongoclient "github.com/poly-workshop/go-webmods/mongoclient"
 	//
 	// // For long-running applications (servers, daemons)
-	// db := mongo_client.NewDatabase(mongo_client.Config{
+	// db := mongoclient.NewDatabase(mongoclient.Config{
 	// 	URI:      "mongodb://localhost:27017",
 	// 	Database: "mydb",
 	// })
@@ -44,10 +44,10 @@ func Example_database() {
 
 // Example_atlas demonstrates connecting to MongoDB Atlas.
 func Example_atlas() {
-	// import mongo_client "github.com/poly-workshop/go-webmods/mongoclient"
+	// import mongoclient "github.com/poly-workshop/go-webmods/mongoclient"
 	// import "time"
 	//
-	// client := mongo_client.NewClient(mongo_client.Config{
+	// client := mongoclient.NewClient(mongoclient.Config{
 	// 	URI:            "mongodb+srv://username:password@cluster.mongodb.net/",
 	// 	Database:       "production",
 	// 	ConnectTimeout: 15 * time.Second,
@@ -66,12 +66,12 @@ func Example_atlas() {
 func Example_withConfig() {
 	// In a real application, you would load these from app.Config()
 	// import "github.com/poly-workshop/go-webmods/app"
-	// import mongo_client "github.com/poly-workshop/go-webmods/mongoclient"
+	// import mongoclient "github.com/poly-workshop/go-webmods/mongoclient"
 	//
 	// app.Init(".")
 	// cfg := app.Config()
 	//
-	// db := mongo_client.NewDatabase(mongo_client.Config{
+	// db := mongoclient.NewDatabase(mongoclient.Config{
 	//     URI:            cfg.GetString("mongodb.uri"),
 	//     Database:       cfg.GetString("mongodb.database"),
 	//     ConnectTimeout: cfg.GetDuration("mongodb.connect_timeout"),
@@ -92,11 +92,11 @@ func Example_withConfig() {
 
 // Example_operations demonstrates basic MongoDB operations.
 func Example_operations() {
-	// import mongo_client "github.com/poly-workshop/go-webmods/mongoclient"
+	// import mongoclient "github.com/poly-workshop/go-webmods/mongoclient"
 	// import "context"
 	// import "go.mongodb.org/mongo-driver/v2/bson"
 	//
-	// db := mongo_client.NewDatabase(mongo_client.Config{
+	// db := mongoclient.NewDatabase(mongoclient.Config{
 	// 	URI:      "mongodb://localhost:27017",
 	// 	Database: "mydb",
 	// })

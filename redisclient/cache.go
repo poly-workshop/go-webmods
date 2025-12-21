@@ -1,4 +1,4 @@
-package redis_client
+package redisclient
 
 import (
 	"context"
@@ -47,16 +47,16 @@ type CacheConfig struct {
 //
 // Example:
 //
-//	rdb := redis_client.NewRDB(redis_client.Config{
+//	rdb := redisclient.NewRDB(redisclient.Config{
 //	    Urls:     []string{"localhost:6379"},
 //	    Password: "",
 //	})
-//	cache := redis_client.NewCache(redis_client.CacheConfig{
+//	cache := redisclient.NewCache(redisclient.CacheConfig{
 //	    Redis: rdb,
 //	})
 func NewCache(cfg CacheConfig) *Cache {
 	if cfg.Redis == nil {
-		panic("redis_client: Redis client is required for cache")
+		panic("redisclient: Redis client is required for cache")
 	}
 
 	// Set defaults

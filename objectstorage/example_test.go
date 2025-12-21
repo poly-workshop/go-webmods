@@ -1,18 +1,18 @@
-package object_storage_test
+package objectstorage_test
 
 import (
 	"bytes"
 	"fmt"
 	"io"
 
-	object_storage "github.com/poly-workshop/go-webmods/objectstorage"
+	objectstorage "github.com/poly-workshop/go-webmods/objectstorage"
 )
 
 // Example demonstrates basic object storage usage with the local provider.
 func Example() {
-	storage, err := object_storage.NewObjectStorage(object_storage.Config{
-		ProviderType: object_storage.ProviderLocal,
-		ProviderConfig: object_storage.ProviderConfig{
+	storage, err := objectstorage.NewObjectStorage(objectstorage.Config{
+		ProviderType: objectstorage.ProviderLocal,
+		ProviderConfig: objectstorage.ProviderConfig{
 			BasePath: "/tmp/storage",
 		},
 	})
@@ -50,9 +50,9 @@ func Example() {
 
 // Example_minio demonstrates using MinIO or S3-compatible storage.
 func Example_minio() {
-	storage, err := object_storage.NewObjectStorage(object_storage.Config{
-		ProviderType: object_storage.ProviderMinio,
-		ProviderConfig: object_storage.ProviderConfig{
+	storage, err := objectstorage.NewObjectStorage(objectstorage.Config{
+		ProviderType: objectstorage.ProviderMinio,
+		ProviderConfig: objectstorage.ProviderConfig{
 			Endpoint:  "minio.example.com:9000",
 			Region:    "us-east-1",
 			AccessKey: "minioadmin",
@@ -72,9 +72,9 @@ func Example_minio() {
 
 // Example_list demonstrates listing objects in a directory.
 func Example_list() {
-	storage, err := object_storage.NewObjectStorage(object_storage.Config{
-		ProviderType: object_storage.ProviderLocal,
-		ProviderConfig: object_storage.ProviderConfig{
+	storage, err := objectstorage.NewObjectStorage(objectstorage.Config{
+		ProviderType: objectstorage.ProviderLocal,
+		ProviderConfig: objectstorage.ProviderConfig{
 			BasePath: "/tmp/storage",
 		},
 	})
@@ -101,9 +101,9 @@ func Example_list() {
 
 // Example_stat demonstrates getting file metadata without downloading.
 func Example_stat() {
-	storage, err := object_storage.NewObjectStorage(object_storage.Config{
-		ProviderType: object_storage.ProviderLocal,
-		ProviderConfig: object_storage.ProviderConfig{
+	storage, err := objectstorage.NewObjectStorage(objectstorage.Config{
+		ProviderType: objectstorage.ProviderLocal,
+		ProviderConfig: objectstorage.ProviderConfig{
 			BasePath: "/tmp/storage",
 		},
 	})
@@ -127,9 +127,9 @@ func Example_stat() {
 
 // Example_delete demonstrates deleting a file from storage.
 func Example_delete() {
-	storage, err := object_storage.NewObjectStorage(object_storage.Config{
-		ProviderType: object_storage.ProviderLocal,
-		ProviderConfig: object_storage.ProviderConfig{
+	storage, err := objectstorage.NewObjectStorage(objectstorage.Config{
+		ProviderType: objectstorage.ProviderLocal,
+		ProviderConfig: objectstorage.ProviderConfig{
 			BasePath: "/tmp/storage",
 		},
 	})

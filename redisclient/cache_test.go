@@ -1,11 +1,11 @@
-package redis_client_test
+package redisclient_test
 
 import (
 	"context"
 	"testing"
 	"time"
 
-	redis_client "github.com/poly-workshop/go-webmods/redisclient"
+	redisclient "github.com/poly-workshop/go-webmods/redisclient"
 )
 
 func TestNewCache(t *testing.T) {
@@ -13,12 +13,12 @@ func TestNewCache(t *testing.T) {
 	defer cleanup()
 
 	t.Run("BasicCacheOperations", func(t *testing.T) {
-		rdb := redis_client.NewRDB(redis_client.Config{
+		rdb := redisclient.NewRDB(redisclient.Config{
 			Urls:     []string{addr},
 			Password: "",
 		})
 
-		cache := redis_client.NewCache(redis_client.CacheConfig{
+		cache := redisclient.NewCache(redisclient.CacheConfig{
 			Redis: rdb,
 		})
 
@@ -61,22 +61,22 @@ func TestNewCache(t *testing.T) {
 	})
 
 	t.Run("MultipleCacheInstances", func(t *testing.T) {
-		rdb1 := redis_client.NewRDB(redis_client.Config{
+		rdb1 := redisclient.NewRDB(redisclient.Config{
 			Urls:     []string{addr},
 			Password: "",
 		})
 
-		rdb2 := redis_client.NewRDB(redis_client.Config{
+		rdb2 := redisclient.NewRDB(redisclient.Config{
 			Urls:     []string{addr},
 			Password: "",
 		})
 
-		cache1 := redis_client.NewCache(redis_client.CacheConfig{
+		cache1 := redisclient.NewCache(redisclient.CacheConfig{
 			Redis:               rdb1,
 			RefreshEventChannel: "cache1:refresh",
 		})
 
-		cache2 := redis_client.NewCache(redis_client.CacheConfig{
+		cache2 := redisclient.NewCache(redisclient.CacheConfig{
 			Redis:               rdb2,
 			RefreshEventChannel: "cache2:refresh",
 		})
@@ -119,12 +119,12 @@ func TestNewCache(t *testing.T) {
 	})
 
 	t.Run("CustomConfiguration", func(t *testing.T) {
-		rdb := redis_client.NewRDB(redis_client.Config{
+		rdb := redisclient.NewRDB(redisclient.Config{
 			Urls:     []string{addr},
 			Password: "",
 		})
 
-		cache := redis_client.NewCache(redis_client.CacheConfig{
+		cache := redisclient.NewCache(redisclient.CacheConfig{
 			Redis:               rdb,
 			RefreshEventChannel: "custom:channel",
 			LocalCacheSize:      500,
@@ -158,7 +158,7 @@ func TestNewCache(t *testing.T) {
 			}
 		}()
 
-		redis_client.NewCache(redis_client.CacheConfig{
+		redisclient.NewCache(redisclient.CacheConfig{
 			Redis: nil,
 		})
 	})

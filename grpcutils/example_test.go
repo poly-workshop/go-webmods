@@ -1,4 +1,4 @@
-package grpc_utils_test
+package grpcutils_test
 
 import (
 	"context"
@@ -7,7 +7,7 @@ import (
 	"net"
 
 	"github.com/poly-workshop/go-webmods/app"
-	grpc_utils "github.com/poly-workshop/go-webmods/grpcutils"
+	grpcutils "github.com/poly-workshop/go-webmods/grpcutils"
 	"google.golang.org/grpc"
 )
 
@@ -22,8 +22,8 @@ func Example() {
 	// Create gRPC server with interceptors
 	server := grpc.NewServer(
 		grpc.ChainUnaryInterceptor(
-			grpc_utils.BuildRequestIDInterceptor(),
-			grpc_utils.BuildLogInterceptor(logger),
+			grpcutils.BuildRequestIDInterceptor(),
+			grpcutils.BuildLogInterceptor(logger),
 		),
 	)
 
@@ -97,8 +97,8 @@ func Example_fullServer() {
 	// logger := slog.Default()
 	// server := grpc.NewServer(
 	//     grpc.ChainUnaryInterceptor(
-	//         grpc_utils.BuildRequestIDInterceptor(),
-	//         grpc_utils.BuildLogInterceptor(logger),
+	//         grpcutils.BuildRequestIDInterceptor(),
+	//         grpcutils.BuildLogInterceptor(logger),
 	//     ),
 	// )
 

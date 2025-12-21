@@ -1,14 +1,14 @@
-package smtp_mailer_test
+package smtpmailer_test
 
 import (
 	"fmt"
 
-	smtp_mailer "github.com/poly-workshop/go-webmods/smtpmailer"
+	smtpmailer "github.com/poly-workshop/go-webmods/smtpmailer"
 )
 
 // Example demonstrates basic email sending.
 func Example() {
-	// mailer := smtp_mailer.NewMailer(smtp_mailer.Config{
+	// mailer := smtpmailer.NewMailer(smtpmailer.Config{
 	// 	Host:      "smtp.example.com",
 	// 	Port:      587,
 	// 	Username:  "user@example.com",
@@ -17,7 +17,7 @@ func Example() {
 	// 	FromName:  "My Application",
 	// })
 	//
-	// err := mailer.SendEmail(smtp_mailer.Message{
+	// err := mailer.SendEmail(smtpmailer.Message{
 	// 	ToEmails: []string{"recipient@example.com"},
 	// 	Subject:  "Hello",
 	// 	Body:     "This is a test email.",
@@ -35,7 +35,7 @@ func Example() {
 
 // Example_html demonstrates sending HTML emails.
 func Example_html() {
-	// mailer := smtp_mailer.NewMailer(smtp_mailer.Config{
+	// mailer := smtpmailer.NewMailer(smtpmailer.Config{
 	// 	Host:      "smtp.example.com",
 	// 	Port:      587,
 	// 	Username:  "user@example.com",
@@ -54,7 +54,7 @@ func Example_html() {
 	// 	</html>
 	// `
 	//
-	// err := mailer.SendEmail(smtp_mailer.Message{
+	// err := mailer.SendEmail(smtpmailer.Message{
 	// 	ToEmails: []string{"user@example.com"},
 	// 	Subject:  "Welcome to Our Service",
 	// 	Body:     htmlBody,
@@ -72,7 +72,7 @@ func Example_html() {
 
 // Example_multipleRecipients demonstrates sending to multiple recipients.
 func Example_multipleRecipients() {
-	// mailer := smtp_mailer.NewMailer(smtp_mailer.Config{
+	// mailer := smtpmailer.NewMailer(smtpmailer.Config{
 	// 	Host:      "smtp.example.com",
 	// 	Port:      587,
 	// 	Username:  "user@example.com",
@@ -81,7 +81,7 @@ func Example_multipleRecipients() {
 	// 	FromName:  "Newsletter",
 	// })
 	//
-	// err := mailer.SendEmail(smtp_mailer.Message{
+	// err := mailer.SendEmail(smtpmailer.Message{
 	// 	ToEmails: []string{
 	// 		"user1@example.com",
 	// 		"user2@example.com",
@@ -106,7 +106,7 @@ func Example_gmail() {
 	// Note: For Gmail, you need to use an App Password
 	// Go to Google Account > Security > 2-Step Verification > App Passwords
 
-	mailer := smtp_mailer.NewMailer(smtp_mailer.Config{
+	mailer := smtpmailer.NewMailer(smtpmailer.Config{
 		Host:      "smtp.gmail.com",
 		Port:      587,
 		Username:  "your-email@gmail.com",
@@ -122,7 +122,7 @@ func Example_gmail() {
 
 // Example_passwordReset demonstrates a password reset email.
 func Example_passwordReset() {
-	// mailer := smtp_mailer.NewMailer(smtp_mailer.Config{
+	// mailer := smtpmailer.NewMailer(smtpmailer.Config{
 	// 	Host:      "smtp.example.com",
 	// 	Port:      587,
 	// 	Username:  "user@example.com",
@@ -148,7 +148,7 @@ func Example_passwordReset() {
 	// 	</html>
 	// `, resetURL)
 	//
-	// err := mailer.SendEmail(smtp_mailer.Message{
+	// err := mailer.SendEmail(smtpmailer.Message{
 	// 	ToEmails: []string{"user@example.com"},
 	// 	Subject:  "Password Reset Request",
 	// 	Body:     htmlBody,

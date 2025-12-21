@@ -1,4 +1,4 @@
-// Package redis_client provides Redis client factories with support for both
+// Package redisclient provides Redis client factories with support for both
 // single-node and cluster modes, plus an integrated caching layer with local
 // memory cache and distributed cache invalidation.
 //
@@ -6,11 +6,11 @@
 //
 // Create Redis clients using the factory pattern to support multiple independent clients:
 //
-//	import redis_client "github.com/poly-workshop/go-webmods/redisclient"
+//	import redisclient "github.com/poly-workshop/go-webmods/redisclient"
 //
 //	func main() {
 //	    // Create a Redis client
-//	    rdb := redis_client.NewRDB(redis_client.Config{
+//	    rdb := redisclient.NewRDB(redisclient.Config{
 //	        Urls:     []string{"localhost:6379"},
 //	        Password: "",
 //	    })
@@ -23,12 +23,12 @@
 //
 // The factory pattern allows creating multiple independent Redis clients:
 //
-//	primaryRDB := redis_client.NewRDB(redis_client.Config{
+//	primaryRDB := redisclient.NewRDB(redisclient.Config{
 //	    Urls:     []string{"primary:6379"},
 //	    Password: "secret1",
 //	})
 //
-//	cacheRDB := redis_client.NewRDB(redis_client.Config{
+//	cacheRDB := redisclient.NewRDB(redisclient.Config{
 //	    Urls:     []string{"cache:6379"},
 //	    Password: "secret2",
 //	})
@@ -39,7 +39,7 @@
 //
 // Redis Cluster example:
 //
-//	rdb := redis_client.NewRDB(redis_client.Config{
+//	rdb := redisclient.NewRDB(redisclient.Config{
 //	    Urls:     []string{"node1:6379", "node2:6379", "node3:6379"},
 //	    Password: "password",
 //	})
@@ -48,8 +48,8 @@
 //
 // The legacy singleton pattern is still supported for backward compatibility:
 //
-//	redis_client.SetConfig([]string{"localhost:6379"}, "")
-//	rdb := redis_client.GetRDB()
+//	redisclient.SetConfig([]string{"localhost:6379"}, "")
+//	rdb := redisclient.GetRDB()
 //
 // However, this pattern is deprecated. Use NewRDB instead for better control
 // and to support multiple clients.
@@ -63,15 +63,15 @@
 //
 // Factory pattern cache creation (recommended):
 //
-//	import redis_client "github.com/poly-workshop/go-webmods/redisclient"
+//	import redisclient "github.com/poly-workshop/go-webmods/redisclient"
 //
 //	func main() {
-//	    rdb := redis_client.NewRDB(redis_client.Config{
+//	    rdb := redisclient.NewRDB(redisclient.Config{
 //	        Urls:     []string{"localhost:6379"},
 //	        Password: "",
 //	    })
 //
-//	    cache := redis_client.NewCache(redis_client.CacheConfig{
+//	    cache := redisclient.NewCache(redisclient.CacheConfig{
 //	        Redis:               rdb,
 //	        RefreshEventChannel: "myapp:cache:refresh",
 //	        LocalCacheSize:      2000,
@@ -96,25 +96,25 @@
 //
 // Singleton pattern cache creation (deprecated):
 //
-//	redis_client.SetConfig([]string{"localhost:6379"}, "")
-//	cache := redis_client.GetCache()
+//	redisclient.SetConfig([]string{"localhost:6379"}, "")
+//	cache := redisclient.GetCache()
 //
 // # Multiple Cache Instances
 //
 // The factory pattern allows creating multiple independent cache instances:
 //
-//	primaryRDB := redis_client.NewRDB(redis_client.Config{
+//	primaryRDB := redisclient.NewRDB(redisclient.Config{
 //	    Urls: []string{"primary:6379"},
 //	})
-//	sessionRDB := redis_client.NewRDB(redis_client.Config{
+//	sessionRDB := redisclient.NewRDB(redisclient.Config{
 //	    Urls: []string{"session:6379"},
 //	})
 //
-//	primaryCache := redis_client.NewCache(redis_client.CacheConfig{
+//	primaryCache := redisclient.NewCache(redisclient.CacheConfig{
 //	    Redis:               primaryRDB,
 //	    RefreshEventChannel: "primary:refresh",
 //	})
-//	sessionCache := redis_client.NewCache(redis_client.CacheConfig{
+//	sessionCache := redisclient.NewCache(redisclient.CacheConfig{
 //	    Redis:               sessionRDB,
 //	    RefreshEventChannel: "session:refresh",
 //	})
@@ -130,8 +130,8 @@
 //
 // Customize the cache refresh channel name (must be done before GetCache):
 //
-//	redis_client.SetCacheRefreshEventChannel("myapp:cache:refresh")
-//	cache := redis_client.GetCache()
+//	redisclient.SetCacheRefreshEventChannel("myapp:cache:refresh")
+//	cache := redisclient.GetCache()
 //
 // # Singleton Pattern (Deprecated)
 //
@@ -190,7 +190,7 @@
 //	import "github.com/poly-workshop/go-webmods/app"
 //
 //	app.Init(".")
-//	redis_client.SetConfig(
+//	redisclient.SetConfig(
 //	    app.Config().GetStringSlice("redis.urls"),
 //	    app.Config().GetString("redis.password"),
 //	)
@@ -218,4 +218,4 @@
 //	    // Handle cache miss or error
 //	    // Load from database, etc.
 //	}
-package redis_client
+package redisclient

@@ -1,4 +1,4 @@
-// Package grpc_utils provides gRPC server interceptors for logging and request
+// Package grpcutils provides gRPC server interceptors for logging and request
 // ID tracking with context propagation.
 //
 // # Interceptors
@@ -13,14 +13,14 @@
 //
 //	import (
 //	    "log/slog"
-//	    grpc_utils "github.com/poly-workshop/go-webmods/grpcutils"
+//	    grpcutils "github.com/poly-workshop/go-webmods/grpcutils"
 //	    "google.golang.org/grpc"
 //	)
 //
 //	logger := slog.Default()
 //	server := grpc.NewServer(
 //	    grpc.ChainUnaryInterceptor(
-//	        grpc_utils.BuildLogInterceptor(logger),
+//	        grpcutils.BuildLogInterceptor(logger),
 //	    ),
 //	)
 //
@@ -36,7 +36,7 @@
 //
 //	server := grpc.NewServer(
 //	    grpc.ChainUnaryInterceptor(
-//	        grpc_utils.BuildRequestIDInterceptor(),
+//	        grpcutils.BuildRequestIDInterceptor(),
 //	    ),
 //	)
 //
@@ -55,7 +55,7 @@
 //	import (
 //	    "log/slog"
 //	    "github.com/poly-workshop/go-webmods/app"
-//	    grpc_utils "github.com/poly-workshop/go-webmods/grpcutils"
+//	    grpcutils "github.com/poly-workshop/go-webmods/grpcutils"
 //	    "google.golang.org/grpc"
 //	)
 //
@@ -66,8 +66,8 @@
 //	    logger := slog.Default()
 //	    server := grpc.NewServer(
 //	        grpc.ChainUnaryInterceptor(
-//	            grpc_utils.BuildRequestIDInterceptor(),
-//	            grpc_utils.BuildLogInterceptor(logger),
+//	            grpcutils.BuildRequestIDInterceptor(),
+//	            grpcutils.BuildLogInterceptor(logger),
 //	        ),
 //	    )
 //
@@ -172,7 +172,7 @@
 //	    "net"
 //	    "log/slog"
 //	    "github.com/poly-workshop/go-webmods/app"
-//	    grpc_utils "github.com/poly-workshop/go-webmods/grpcutils"
+//	    grpcutils "github.com/poly-workshop/go-webmods/grpcutils"
 //	    "google.golang.org/grpc"
 //	    "google.golang.org/grpc/health"
 //	    "google.golang.org/grpc/health/grpc_health_v1"
@@ -191,8 +191,8 @@
 //	    logger := slog.Default()
 //	    server := grpc.NewServer(
 //	        grpc.ChainUnaryInterceptor(
-//	            grpc_utils.BuildRequestIDInterceptor(),
-//	            grpc_utils.BuildLogInterceptor(logger),
+//	            grpcutils.BuildRequestIDInterceptor(),
+//	            grpcutils.BuildLogInterceptor(logger),
 //	        ),
 //	    )
 //
@@ -212,4 +212,4 @@
 //	        panic(err)
 //	    }
 //	}
-package grpc_utils
+package grpcutils

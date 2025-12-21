@@ -1,13 +1,13 @@
-// Package smtp_mailer provides a simple SMTP email client with TLS support
+// Package smtpmailer provides a simple SMTP email client with TLS support
 // for sending HTML and plain text emails.
 //
 // # Basic Usage
 //
 // Create a mailer and send an email:
 //
-//	import smtp_mailer "github.com/poly-workshop/go-webmods/smtpmailer"
+//	import smtpmailer "github.com/poly-workshop/go-webmods/smtpmailer"
 //
-//	mailer := smtp_mailer.NewMailer(smtp_mailer.Config{
+//	mailer := smtpmailer.NewMailer(smtpmailer.Config{
 //	    Host:      "smtp.gmail.com",
 //	    Port:      587,
 //	    Username:  "your-email@gmail.com",
@@ -16,7 +16,7 @@
 //	    FromName:  "My Application",
 //	})
 //
-//	err := mailer.SendEmail(smtp_mailer.Message{
+//	err := mailer.SendEmail(smtpmailer.Message{
 //	    ToEmails: []string{"user@example.com"},
 //	    Subject:  "Welcome to our service",
 //	    Body:     "Thank you for signing up!",
@@ -27,7 +27,7 @@
 //
 // Send HTML-formatted emails:
 //
-//	err := mailer.SendEmail(smtp_mailer.Message{
+//	err := mailer.SendEmail(smtpmailer.Message{
 //	    ToEmails: []string{"user@example.com"},
 //	    Subject:  "Welcome!",
 //	    Body: `
@@ -46,7 +46,7 @@
 //
 // Send to multiple recipients:
 //
-//	err := mailer.SendEmail(smtp_mailer.Message{
+//	err := mailer.SendEmail(smtpmailer.Message{
 //	    ToEmails: []string{
 //	        "user1@example.com",
 //	        "user2@example.com",
@@ -116,7 +116,7 @@
 //	app.Init(".")
 //	cfg := app.Config()
 //
-//	mailer := smtp_mailer.NewMailer(smtp_mailer.Config{
+//	mailer := smtpmailer.NewMailer(smtpmailer.Config{
 //	    Host:      cfg.GetString("smtp.host"),
 //	    Port:      cfg.GetInt("smtp.port"),
 //	    Username:  cfg.GetString("smtp.username"),
@@ -159,7 +159,7 @@
 //	    return err
 //	}
 //
-//	err = mailer.SendEmail(smtp_mailer.Message{
+//	err = mailer.SendEmail(smtpmailer.Message{
 //	    ToEmails: []string{"alice@example.com"},
 //	    Subject:  "Verify your email",
 //	    Body:     body.String(),
@@ -204,7 +204,7 @@
 //	import "time"
 //
 //	for _, recipient := range recipients {
-//	    err := mailer.SendEmail(smtp_mailer.Message{
+//	    err := mailer.SendEmail(smtpmailer.Message{
 //	        ToEmails: []string{recipient},
 //	        Subject:  "Newsletter",
 //	        Body:     content,
@@ -229,7 +229,7 @@
 //
 // # Example: Password Reset Email
 //
-//	func sendPasswordReset(mailer *smtp_mailer.Mailer, email, token string) error {
+//	func sendPasswordReset(mailer *smtpmailer.Mailer, email, token string) error {
 //	    resetURL := fmt.Sprintf("https://example.com/reset?token=%s", token)
 //
 //	    body := fmt.Sprintf(`
@@ -246,11 +246,11 @@
 //	        </html>
 //	    `, resetURL)
 //
-//	    return mailer.SendEmail(smtp_mailer.Message{
+//	    return mailer.SendEmail(smtpmailer.Message{
 //	        ToEmails: []string{email},
 //	        Subject:  "Password Reset Request",
 //	        Body:     body,
 //	        IsHTML:   true,
 //	    })
 //	}
-package smtp_mailer
+package smtpmailer

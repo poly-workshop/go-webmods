@@ -1,4 +1,4 @@
-package redis_client_test
+package redisclient_test
 
 import (
 	"fmt"
@@ -9,10 +9,10 @@ import (
 // Example demonstrates basic Redis client usage.
 func Example() {
 	// Configure Redis connection
-	// redis_client.SetConfig([]string{"localhost:6379"}, "")
+	// redisclient.SetConfig([]string{"localhost:6379"}, "")
 	//
 	// // Get Redis client
-	// rdb := redis_client.GetRDB()
+	// rdb := redisclient.GetRDB()
 	//
 	// ctx := context.Background()
 	//
@@ -36,10 +36,10 @@ func Example() {
 
 // Example_cluster demonstrates Redis cluster configuration.
 func Example_cluster() {
-	// import redis_client "github.com/poly-workshop/go-webmods/redisclient"
+	// import redisclient "github.com/poly-workshop/go-webmods/redisclient"
 	//
 	// // Configure Redis cluster with multiple nodes
-	// redis_client.SetConfig(
+	// redisclient.SetConfig(
 	// 	[]string{
 	// 		"node1.redis.example.com:6379",
 	// 		"node2.redis.example.com:6379",
@@ -49,7 +49,7 @@ func Example_cluster() {
 	// )
 	//
 	// // Get Redis client (automatically uses cluster mode)
-	// rdb := redis_client.GetRDB()
+	// rdb := redisclient.GetRDB()
 	// _ = rdb
 
 	fmt.Println("Redis cluster configured")
@@ -59,10 +59,10 @@ func Example_cluster() {
 // Example_cache demonstrates using the cache layer with local and distributed caching.
 func Example_cache() {
 	// Configure Redis
-	// redis_client.SetConfig([]string{"localhost:6379"}, "")
+	// redisclient.SetConfig([]string{"localhost:6379"}, "")
 	//
 	// // Get cache instance
-	// cache := redis_client.GetCache()
+	// cache := redisclient.GetCache()
 	//
 	// ctx := context.Background()
 	//
@@ -98,13 +98,13 @@ func Example_cache() {
 // Example_cacheInvalidation demonstrates cache invalidation across multiple instances.
 func Example_cacheInvalidation() {
 	// Configure Redis
-	// redis_client.SetConfig([]string{"localhost:6379"}, "")
+	// redisclient.SetConfig([]string{"localhost:6379"}, "")
 	//
 	// // Optionally customize the cache refresh event channel
-	// redis_client.SetCacheRefreshEventChannel("myapp:cache:refresh")
+	// redisclient.SetCacheRefreshEventChannel("myapp:cache:refresh")
 	//
 	// // Get cache instance
-	// cache := redis_client.GetCache()
+	// cache := redisclient.GetCache()
 	//
 	// ctx := context.Background()
 	//
@@ -122,12 +122,12 @@ func Example_cacheInvalidation() {
 // Example_newRDB demonstrates creating multiple independent Redis clients.
 func Example_newRDB() {
 	// Create multiple Redis clients with different configurations
-	// rdb1 := redis_client.NewRDB(redis_client.Config{
+	// rdb1 := redisclient.NewRDB(redisclient.Config{
 	// 	Urls:     []string{"localhost:6379"},
 	// 	Password: "",
 	// })
 	//
-	// rdb2 := redis_client.NewRDB(redis_client.Config{
+	// rdb2 := redisclient.NewRDB(redisclient.Config{
 	// 	Urls:     []string{"redis-cluster:6379"},
 	// 	Password: "secret",
 	// })
@@ -150,25 +150,25 @@ func Example_newRDB() {
 // Example_newCache demonstrates creating multiple cache instances with different Redis backends.
 func Example_newCache() {
 	// Create Redis clients for different purposes
-	// primaryRDB := redis_client.NewRDB(redis_client.Config{
+	// primaryRDB := redisclient.NewRDB(redisclient.Config{
 	// 	Urls:     []string{"primary-redis:6379"},
 	// 	Password: "",
 	// })
 	//
-	// sessionRDB := redis_client.NewRDB(redis_client.Config{
+	// sessionRDB := redisclient.NewRDB(redisclient.Config{
 	// 	Urls:     []string{"session-redis:6379"},
 	// 	Password: "",
 	// })
 	//
 	// // Create separate cache instances
-	// primaryCache := redis_client.NewCache(redis_client.CacheConfig{
+	// primaryCache := redisclient.NewCache(redisclient.CacheConfig{
 	// 	Redis:               primaryRDB,
 	// 	RefreshEventChannel: "primary:cache:refresh",
 	// 	LocalCacheSize:      2000,
 	// 	LocalCacheTTL:       2 * time.Minute,
 	// })
 	//
-	// sessionCache := redis_client.NewCache(redis_client.CacheConfig{
+	// sessionCache := redisclient.NewCache(redisclient.CacheConfig{
 	// 	Redis:               sessionRDB,
 	// 	RefreshEventChannel: "session:cache:refresh",
 	// 	LocalCacheSize:      1000,

@@ -1,4 +1,4 @@
-// Package object_storage provides a unified interface for object storage across
+// Package objectstorage provides a unified interface for object storage across
 // multiple providers including local filesystem, MinIO, and Volcengine TOS.
 //
 // # Supported Providers
@@ -11,11 +11,11 @@
 //
 // Create a storage client:
 //
-//	import object_storage "github.com/poly-workshop/go-webmods/objectstorage"
+//	import objectstorage "github.com/poly-workshop/go-webmods/objectstorage"
 //
-//	storage, err := object_storage.NewObjectStorage(object_storage.Config{
-//	    ProviderType: object_storage.ProviderLocal,
-//	    ProviderConfig: object_storage.ProviderConfig{
+//	storage, err := objectstorage.NewObjectStorage(objectstorage.Config{
+//	    ProviderType: objectstorage.ProviderLocal,
+//	    ProviderConfig: objectstorage.ProviderConfig{
 //	        BasePath: "/data/uploads",
 //	    },
 //	})
@@ -27,9 +27,9 @@
 //
 // Store files on the local filesystem:
 //
-//	storage, err := object_storage.NewObjectStorage(object_storage.Config{
-//	    ProviderType: object_storage.ProviderLocal,
-//	    ProviderConfig: object_storage.ProviderConfig{
+//	storage, err := objectstorage.NewObjectStorage(objectstorage.Config{
+//	    ProviderType: objectstorage.ProviderLocal,
+//	    ProviderConfig: objectstorage.ProviderConfig{
 //	        BasePath: "/var/data",  // Base directory for all files
 //	    },
 //	})
@@ -38,9 +38,9 @@
 //
 // Connect to MinIO or any S3-compatible service:
 //
-//	storage, err := object_storage.NewObjectStorage(object_storage.Config{
-//	    ProviderType: object_storage.ProviderMinio,
-//	    ProviderConfig: object_storage.ProviderConfig{
+//	storage, err := objectstorage.NewObjectStorage(objectstorage.Config{
+//	    ProviderType: objectstorage.ProviderMinio,
+//	    ProviderConfig: objectstorage.ProviderConfig{
 //	        Endpoint:  "minio.example.com:9000",
 //	        Region:    "us-east-1",
 //	        AccessKey: "minioadmin",
@@ -54,9 +54,9 @@
 //
 // Connect to Volcengine TOS:
 //
-//	storage, err := object_storage.NewObjectStorage(object_storage.Config{
-//	    ProviderType: object_storage.ProviderVolcengine,
-//	    ProviderConfig: object_storage.ProviderConfig{
+//	storage, err := objectstorage.NewObjectStorage(objectstorage.Config{
+//	    ProviderType: objectstorage.ProviderVolcengine,
+//	    ProviderConfig: objectstorage.ProviderConfig{
 //	        Endpoint:    "tos-cn-beijing.volces.com",
 //	        Region:      "cn-beijing",
 //	        AccessKey:   "your-access-key",
@@ -128,13 +128,13 @@
 //
 // Example configuration file (configs/default.yaml):
 //
-//	object_storage:
+//	objectstorage:
 //	  provider: local
 //	  base_path: /var/data/uploads
 //
 // For production (configs/production.yaml):
 //
-//	object_storage:
+//	objectstorage:
 //	  provider: minio
 //	  endpoint: minio.prod.example.com:9000
 //	  region: us-east-1
@@ -146,21 +146,21 @@
 //
 //	import (
 //	    "github.com/poly-workshop/go-webmods/app"
-//	    object_storage "github.com/poly-workshop/go-webmods/objectstorage"
+//	    objectstorage "github.com/poly-workshop/go-webmods/objectstorage"
 //	)
 //
 //	app.Init(".")
 //	cfg := app.Config()
 //
-//	storage, err := object_storage.NewObjectStorage(object_storage.Config{
-//	    ProviderType: object_storage.ProviderType(cfg.GetString("object_storage.provider")),
-//	    ProviderConfig: object_storage.ProviderConfig{
-//	        Endpoint:  cfg.GetString("object_storage.endpoint"),
-//	        Region:    cfg.GetString("object_storage.region"),
-//	        AccessKey: cfg.GetString("object_storage.access_key"),
-//	        SecretKey: cfg.GetString("object_storage.secret_key"),
-//	        Bucket:    cfg.GetString("object_storage.bucket"),
-//	        BasePath:  cfg.GetString("object_storage.base_path"),
+//	storage, err := objectstorage.NewObjectStorage(objectstorage.Config{
+//	    ProviderType: objectstorage.ProviderType(cfg.GetString("objectstorage.provider")),
+//	    ProviderConfig: objectstorage.ProviderConfig{
+//	        Endpoint:  cfg.GetString("objectstorage.endpoint"),
+//	        Region:    cfg.GetString("objectstorage.region"),
+//	        AccessKey: cfg.GetString("objectstorage.access_key"),
+//	        SecretKey: cfg.GetString("objectstorage.secret_key"),
+//	        Bucket:    cfg.GetString("objectstorage.bucket"),
+//	        BasePath:  cfg.GetString("objectstorage.base_path"),
 //	    },
 //	})
 //
@@ -211,4 +211,4 @@
 //   - UseInternal=true uses internal endpoint (for in-region VMs)
 //   - Supports Volcengine-specific features
 //   - Region must match bucket region
-package object_storage
+package objectstorage

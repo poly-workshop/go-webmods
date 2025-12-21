@@ -1,4 +1,4 @@
-// Package gorm_client provides a factory function for creating GORM database
+// Package gormclient provides a factory function for creating GORM database
 // connections with support for multiple database drivers.
 //
 // # Supported Databases
@@ -10,9 +10,9 @@
 //
 // Create a PostgreSQL connection:
 //
-//	import gorm_client "github.com/poly-workshop/go-webmods/gormclient"
+//	import gormclient "github.com/poly-workshop/go-webmods/gormclient"
 //
-//	db := gorm_client.NewDB(gorm_client.Config{
+//	db := gormclient.NewDB(gormclient.Config{
 //	    Driver:   "postgres",
 //	    Host:     "localhost",
 //	    Port:     5432,
@@ -24,7 +24,7 @@
 //
 // Create a SQLite connection:
 //
-//	db := gorm_client.NewDB(gorm_client.Config{
+//	db := gormclient.NewDB(gormclient.Config{
 //	    Driver: "sqlite",
 //	    Name:   "data/app.db",  // File path for SQLite database
 //	})
@@ -37,13 +37,13 @@
 //
 //	import (
 //	    "github.com/poly-workshop/go-webmods/app"
-//	    gorm_client "github.com/poly-workshop/go-webmods/gormclient"
+//	    gormclient "github.com/poly-workshop/go-webmods/gormclient"
 //	)
 //
 //	func main() {
 //	    app.Init(".")
 //
-//	    cfg := gorm_client.Config{
+//	    cfg := gormclient.Config{
 //	        Driver:   app.Config().GetString("database.driver"),
 //	        Host:     app.Config().GetString("database.host"),
 //	        Port:     app.Config().GetInt("database.port"),
@@ -53,7 +53,7 @@
 //	        SSLMode:  app.Config().GetString("database.sslmode"),
 //	    }
 //
-//	    db := gorm_client.NewDB(cfg)
+//	    db := gormclient.NewDB(cfg)
 //	    // Use db for GORM operations
 //	}
 //
@@ -120,4 +120,4 @@
 //   - Enable SSL mode for PostgreSQL in production (sslmode: require)
 //   - Configure connection pooling for high-traffic applications
 //   - Use migrations for schema management (e.g., golang-migrate or GORM AutoMigrate)
-package gorm_client
+package gormclient

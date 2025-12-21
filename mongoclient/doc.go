@@ -1,13 +1,13 @@
-// Package mongo_client provides a factory function for creating MongoDB
+// Package mongoclient provides a factory function for creating MongoDB
 // connections using the MongoDB Go Driver v2.
 //
 // # Basic Usage
 //
 // Create a MongoDB client (recommended when you need explicit lifecycle management):
 //
-//	import mongo_client "github.com/poly-workshop/go-webmods/mongoclient"
+//	import mongoclient "github.com/poly-workshop/go-webmods/mongoclient"
 //
-//	client := mongo_client.NewClient(mongo_client.Config{
+//	client := mongoclient.NewClient(mongoclient.Config{
 //	    URI:      "mongodb://localhost:27017",
 //	    Database: "mydb",
 //	})
@@ -18,7 +18,7 @@
 //
 // Create a MongoDB database directly (for long-running applications):
 //
-//	db := mongo_client.NewDatabase(mongo_client.Config{
+//	db := mongoclient.NewDatabase(mongoclient.Config{
 //	    URI:      "mongodb://localhost:27017",
 //	    Database: "mydb",
 //	})
@@ -31,20 +31,20 @@
 //
 //	import (
 //	    "github.com/poly-workshop/go-webmods/app"
-//	    mongo_client "github.com/poly-workshop/go-webmods/mongoclient"
+//	    mongoclient "github.com/poly-workshop/go-webmods/mongoclient"
 //	)
 //
 //	func main() {
 //	    app.Init(".")
 //
-//	    cfg := mongo_client.Config{
+//	    cfg := mongoclient.Config{
 //	        URI:            app.Config().GetString("mongodb.uri"),
 //	        Database:       app.Config().GetString("mongodb.database"),
 //	        ConnectTimeout: app.Config().GetDuration("mongodb.connect_timeout"),
 //	        PingTimeout:    app.Config().GetDuration("mongodb.ping_timeout"),
 //	    }
 //
-//	    db := mongo_client.NewDatabase(cfg)
+//	    db := mongoclient.NewDatabase(cfg)
 //	    // Use db for MongoDB operations
 //	}
 //
@@ -144,4 +144,4 @@
 //   - Enable authentication and TLS for production connections
 //   - Use indexes to optimize query performance
 //   - Monitor connection pool metrics in production
-package mongo_client
+package mongoclient

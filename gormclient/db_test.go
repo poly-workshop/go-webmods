@@ -1,4 +1,4 @@
-package gorm_client
+package gormclient
 
 import (
 	"os"

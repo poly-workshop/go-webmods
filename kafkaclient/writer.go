@@ -1,4 +1,4 @@
-package kafka_client
+package kafkaclient
 
 import (
 	"time"
@@ -21,10 +21,10 @@ type WriterConfig struct {
 
 func NewWriter(cfg WriterConfig) *kafka.Writer {
 	if len(cfg.Brokers) == 0 {
-		panic("kafka_client: no kafka brokers configured")
+		panic("kafkaclient: no kafka brokers configured")
 	}
 	if cfg.Topic == "" {
-		panic("kafka_client: topic is required")
+		panic("kafkaclient: topic is required")
 	}
 
 	writerCfg := kafka.WriterConfig{

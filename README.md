@@ -26,7 +26,7 @@ package main
 import (
     "log/slog"
     "github.com/poly-workshop/go-webmods/app"
-    gorm_client "github.com/poly-workshop/go-webmods/gormclient"
+    gormclient "github.com/poly-workshop/go-webmods/gormclient"
 )
 
 func main() {
@@ -35,7 +35,7 @@ func main() {
     app.Init(".")  // Loads config from ./configs/
 
     // Initialize database
-    db := gorm_client.NewDB(gorm_client.Config{
+    db := gormclient.NewDB(gormclient.Config{
         Driver:   "postgres",
         Host:     "localhost",
         Port:     5432,
@@ -58,43 +58,43 @@ Core application utilities including:
 - Structured logging with context propagation (slog)
 - Application initialization helpers
 
-### [gorm_client](https://pkg.go.dev/github.com/poly-workshop/go-webmods/gormclient)
+### [gormclient](https://pkg.go.dev/github.com/poly-workshop/go-webmods/gormclient)
 Database client factory supporting:
 - PostgreSQL
 - MySQL
 - SQLite
 - Connection pooling configuration
 
-### [mongo_client](https://pkg.go.dev/github.com/poly-workshop/go-webmods/mongoclient)
+### [mongoclient](https://pkg.go.dev/github.com/poly-workshop/go-webmods/mongoclient)
 MongoDB client factory using the v2 driver:
 - MongoDB Atlas support
 - Connection pooling and timeouts
 - Ping verification on startup
 
-### [redis_client](https://pkg.go.dev/github.com/poly-workshop/go-webmods/redisclient)
+### [redisclient](https://pkg.go.dev/github.com/poly-workshop/go-webmods/redisclient)
 Redis client with:
 - Single-node and cluster mode support
 - Two-level caching (local + distributed)
 - Automatic cache invalidation via pub/sub
 
-### [kafka_client](https://pkg.go.dev/github.com/poly-workshop/go-webmods/kafkaclient)
+### [kafkaclient](https://pkg.go.dev/github.com/poly-workshop/go-webmods/kafkaclient)
 Kafka client helpers with:
 - Reader factory (consumer group or partition)
 - Writer factory with configurable batching and acknowledgements
 
-### [object_storage](https://pkg.go.dev/github.com/poly-workshop/go-webmods/objectstorage)
+### [objectstorage](https://pkg.go.dev/github.com/poly-workshop/go-webmods/objectstorage)
 Unified object storage interface supporting:
 - Local filesystem
 - MinIO / S3-compatible storage
 - Volcengine TOS
 
-### [grpc_utils](https://pkg.go.dev/github.com/poly-workshop/go-webmods/grpcutils)
+### [grpcutils](https://pkg.go.dev/github.com/poly-workshop/go-webmods/grpcutils)
 gRPC server interceptors for:
 - Structured logging
 - Request ID generation and propagation
 - Context-aware tracing
 
-### [smtp_mailer](https://pkg.go.dev/github.com/poly-workshop/go-webmods/smtpmailer)
+### [smtpmailer](https://pkg.go.dev/github.com/poly-workshop/go-webmods/smtpmailer)
 SMTP email client with:
 - TLS support
 - HTML and plain text emails
@@ -111,9 +111,9 @@ component := package.NewComponent(package.Config{...})
 ### Provider Pattern
 Multi-backend support with unified interfaces:
 ```go
-storage, err := object_storage.NewObjectStorage(object_storage.Config{
-    ProviderType: object_storage.ProviderLocal,
-    ProviderConfig: object_storage.ProviderConfig{
+storage, err := objectstorage.NewObjectStorage(objectstorage.Config{
+    ProviderType: objectstorage.ProviderLocal,
+    ProviderConfig: objectstorage.ProviderConfig{
         BasePath: "/data",
     },
 })

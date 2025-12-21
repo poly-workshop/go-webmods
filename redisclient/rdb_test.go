@@ -1,11 +1,11 @@
-package redis_client_test
+package redisclient_test
 
 import (
 	"context"
 	"testing"
 	"time"
 
-	redis_client "github.com/poly-workshop/go-webmods/redisclient"
+	redisclient "github.com/poly-workshop/go-webmods/redisclient"
 	"github.com/testcontainers/testcontainers-go"
 	"github.com/testcontainers/testcontainers-go/wait"
 )
@@ -56,7 +56,7 @@ func TestNewRDB(t *testing.T) {
 
 	// Test creating a single-node client
 	t.Run("SingleNode", func(t *testing.T) {
-		rdb := redis_client.NewRDB(redis_client.Config{
+		rdb := redisclient.NewRDB(redisclient.Config{
 			Urls:     []string{addr},
 			Password: "",
 		})
@@ -82,12 +82,12 @@ func TestNewRDB(t *testing.T) {
 
 	// Test creating multiple independent clients
 	t.Run("MultipleClients", func(t *testing.T) {
-		rdb1 := redis_client.NewRDB(redis_client.Config{
+		rdb1 := redisclient.NewRDB(redisclient.Config{
 			Urls:     []string{addr},
 			Password: "",
 		})
 
-		rdb2 := redis_client.NewRDB(redis_client.Config{
+		rdb2 := redisclient.NewRDB(redisclient.Config{
 			Urls:     []string{addr},
 			Password: "",
 		})
@@ -134,7 +134,7 @@ func TestNewRDB(t *testing.T) {
 			}
 		}()
 
-		redis_client.NewRDB(redis_client.Config{
+		redisclient.NewRDB(redisclient.Config{
 			Urls:     []string{},
 			Password: "",
 		})
@@ -146,8 +146,8 @@ func TestGetRDB_BackwardCompatibility(t *testing.T) {
 	defer cleanup()
 
 	// Test backward compatibility with singleton pattern
-	redis_client.SetConfig([]string{addr}, "")
-	rdb := redis_client.GetRDB()
+	redisclient.SetConfig([]string{addr}, "")
+	rdb := redisclient.GetRDB()
 
 	ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
 	defer cancel()
@@ -167,7 +167,7 @@ func TestGetRDB_BackwardCompatibility(t *testing.T) {
 	}
 
 	// Test that subsequent calls return the same instance
-	rdb2 := redis_client.GetRDB()
+	rdb2 := redisclient.GetRDB()
 	if rdb != rdb2 {
 		t.Error("GetRDB should return the same singleton instance")
 	}

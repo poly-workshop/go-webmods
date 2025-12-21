@@ -1,4 +1,4 @@
-package kafka_client
+package kafkaclient
 
 import (
 	"testing"

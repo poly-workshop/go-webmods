@@ -1,9 +1,9 @@
-// Package kafka_client provides factory functions for creating Kafka readers
+// Package kafkaclient provides factory functions for creating Kafka readers
 // and writers using github.com/segmentio/kafka-go.
 //
 // # Reader
 //
-//	reader := kafka_client.NewReader(kafka_client.ReaderConfig{
+//	reader := kafkaclient.NewReader(kafkaclient.ReaderConfig{
 //	    Brokers: []string{"localhost:9092"},
 //	    Topic:   "example-topic",
 //	    GroupID: "example-group",
@@ -12,9 +12,9 @@
 //
 // # Writer
 //
-//	writer := kafka_client.NewWriter(kafka_client.WriterConfig{
+//	writer := kafkaclient.NewWriter(kafkaclient.WriterConfig{
 //	    Brokers: []string{"localhost:9092"},
 //	    Topic:   "example-topic",
 //	})
 //	defer writer.Close()
-package kafka_client
+package kafkaclient

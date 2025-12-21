@@ -7,12 +7,12 @@
 // This library includes the following packages:
 //
 //   - app: Core application utilities for configuration, logging, and context management
-//   - gorm_client: Database client factory supporting PostgreSQL and SQLite
-//   - redis_client: Redis client with caching support and cluster mode
-//   - kafka_client: Kafka client factories for readers and writers
-//   - object_storage: Multi-provider object storage interface (local, MinIO, Volcengine TOS)
-//   - grpc_utils: gRPC middleware and interceptors for logging and request ID tracking
-//   - smtp_mailer: SMTP email sender with TLS support
+//   - gormclient: Database client factory supporting PostgreSQL and SQLite
+//   - redisclient: Redis client with caching support and cluster mode
+//   - kafkaclient: Kafka client factories for readers and writers
+//   - objectstorage: Multi-provider object storage interface (local, MinIO, Volcengine TOS)
+//   - grpcutils: gRPC middleware and interceptors for logging and request ID tracking
+//   - smtpmailer: SMTP email sender with TLS support
 //
 // # Installation
 //
@@ -35,9 +35,9 @@
 //
 // 2. Initialize components using their factory functions:
 //
-//	import gorm_client "github.com/poly-workshop/go-webmods/gormclient"
+//	import gormclient "github.com/poly-workshop/go-webmods/gormclient"
 //
-//	db := gorm_client.NewDB(gorm_client.Config{
+//	db := gormclient.NewDB(gormclient.Config{
 //	    Driver:   "postgres",
 //	    Host:     "localhost",
 //	    Port:     5432,
@@ -66,9 +66,9 @@
 //
 // Provider Pattern: Multi-backend support (e.g., object storage):
 //
-//	storage, err := object_storage.NewObjectStorage(object_storage.Config{
-//	    ProviderType: object_storage.ProviderLocal,
-//	    ProviderConfig: object_storage.ProviderConfig{
+//	storage, err := objectstorage.NewObjectStorage(objectstorage.Config{
+//	    ProviderType: objectstorage.ProviderLocal,
+//	    ProviderConfig: objectstorage.ProviderConfig{
 //	        BasePath: "/data",
 //	    },
 //	})
@@ -87,8 +87,8 @@
 //	import (
 //	    "log/slog"
 //	    "github.com/poly-workshop/go-webmods/app"
-//	    gorm_client "github.com/poly-workshop/go-webmods/gormclient"
-//	    redis_client "github.com/poly-workshop/go-webmods/redisclient"
+//	    gormclient "github.com/poly-workshop/go-webmods/gormclient"
+//	    redisclient "github.com/poly-workshop/go-webmods/redisclient"
 //	)
 //
 //	func main() {
@@ -97,14 +97,14 @@
 //	    app.Init(".")
 //
 //	    // Initialize database
-//	    db := gorm_client.NewDB(gorm_client.Config{
+//	    db := gormclient.NewDB(gormclient.Config{
 //	        Driver: "sqlite",
 //	        Name:   "data/app.db",
 //	    })
 //
 //	    // Initialize Redis
-//	    redis_client.SetConfig([]string{"localhost:6379"}, "")
-//	    rdb := redis_client.GetRDB()
+//	    redisclient.SetConfig([]string{"localhost:6379"}, "")
+//	    rdb := redisclient.GetRDB()
 //
 //	    slog.Info("Application started successfully")
 //	    // ... rest of application logic

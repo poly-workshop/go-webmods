@@ -1,4 +1,4 @@
-package smtp_mailer
+package smtpmailer
 
 import (
 	"crypto/tls"

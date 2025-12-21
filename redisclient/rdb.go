@@ -1,4 +1,4 @@
-package redis_client
+package redisclient
 
 import (
 	"sync"
@@ -26,13 +26,13 @@ var (
 //
 // Example:
 //
-//	rdb := redis_client.NewRDB(redis_client.Config{
+//	rdb := redisclient.NewRDB(redisclient.Config{
 //	    Urls:     []string{"localhost:6379"},
 //	    Password: "",
 //	})
 func NewRDB(cfg Config) redis.UniversalClient {
 	if len(cfg.Urls) == 0 {
-		panic("redis_client: no redis hosts configured")
+		panic("redisclient: no redis hosts configured")
 	}
 	if len(cfg.Urls) == 1 {
 		return redis.NewClient(&redis.Options{
