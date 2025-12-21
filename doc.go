@@ -103,8 +103,10 @@
 //	    })
 //
 //	    // Initialize Redis
-//	    redisclient.SetConfig([]string{"localhost:6379"}, "")
-//	    rdb := redisclient.GetRDB()
+//	    rdb := redisclient.NewRDB(redisclient.Config{
+//	        Urls:     []string{"localhost:6379"},
+//	        Password: "",
+//	    })
 //
 //	    slog.Info("Application started successfully")
 //	    // ... rest of application logic
