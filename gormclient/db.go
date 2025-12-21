@@ -17,7 +17,7 @@ type Config struct {
 	Port     int
 	Username string
 	Password string
-	Name     string
+	DbName   string
 	SSLMode  string
 }
 
@@ -53,7 +53,7 @@ func openPostgres(cfg Config) (db *gorm.DB, err error) {
 		cfg.Host,
 		cfg.Port,
 		cfg.Username,
-		cfg.Name,
+		cfg.DbName,
 		cfg.Password,
 		cfg.SSLMode,
 	)
@@ -71,7 +71,7 @@ func openMysql(cfg Config) (db *gorm.DB, err error) {
 		cfg.Password,
 		cfg.Host,
 		cfg.Port,
-		cfg.Name,
+		cfg.DbName,
 	)
 	db, err = gorm.Open(mysql.Open(dsn))
 	if err != nil {
@@ -82,7 +82,7 @@ func openMysql(cfg Config) (db *gorm.DB, err error) {
 
 func openSqlite(cfg Config) (db *gorm.DB, err error) {
 	// Ensure directory exists for SQLite database file
-	dbPath := cfg.Name
+	dbPath := cfg.DbName
 	if dir := filepath.Dir(dbPath); dir != "." {
 		if err := os.MkdirAll(dir, 0o755); err != nil {
 			return nil, fmt.Errorf("failed to create directory for SQLite database: %w", err)
