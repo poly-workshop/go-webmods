@@ -43,7 +43,7 @@
 //	    Port:     5432,
 //	    Username: "user",
 //	    Password: "pass",
-//	    Name:     "dbname",
+//	    DbName:   "dbname",
 //	    SSLMode:  "disable",
 //	})
 //
@@ -99,7 +99,7 @@
 //	    // Initialize database
 //	    db := gormclient.NewDB(gormclient.Config{
 //	        Driver: "sqlite",
-//	        Name:   "data/app.db",
+//	        DbName: "data/app.db",
 //	    })
 //
 //	    // Initialize Redis

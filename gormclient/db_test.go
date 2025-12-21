@@ -20,7 +20,7 @@ func TestNewDB_SQLite(t *testing.T) {
 	dbPath := tempDir + "/test.db"
 	db := NewDB(Config{
 		Driver: "sqlite",
-		Name:   dbPath,
+		DbName: dbPath,
 	})
 
 	if db == nil {
@@ -60,7 +60,7 @@ func TestOpenMysql_DSNFormat(t *testing.T) {
 		Port:     3306,
 		Username: "user",
 		Password: "password",
-		Name:     "testdb",
+		DbName:   "testdb",
 	}
 
 	// The openMysql function will attempt to connect and fail (no MySQL server)
@@ -83,7 +83,7 @@ func TestOpenPostgres_DSNFormat(t *testing.T) {
 		Port:     5432,
 		Username: "user",
 		Password: "password",
-		Name:     "testdb",
+		DbName:   "testdb",
 		SSLMode:  "disable",
 	}
 

@@ -18,7 +18,7 @@
 //	    Port:     5432,
 //	    Username: "user",
 //	    Password: "password",
-//	    Name:     "mydb",
+//	    DbName:   "mydb",
 //	    SSLMode:  "disable",
 //	})
 //
@@ -26,7 +26,7 @@
 //
 //	db := gormclient.NewDB(gormclient.Config{
 //	    Driver: "sqlite",
-//	    Name:   "data/app.db",  // File path for SQLite database
+//	    DbName: "data/app.db",  // File path for SQLite database
 //	})
 //
 // The function automatically creates parent directories for SQLite databases.
@@ -49,7 +49,7 @@
 //	        Port:     app.Config().GetInt("database.port"),
 //	        Username: app.Config().GetString("database.username"),
 //	        Password: app.Config().GetString("database.password"),
-//	        Name:     app.Config().GetString("database.name"),
+//	        DbName:   app.Config().GetString("database.name"),
 //	        SSLMode:  app.Config().GetString("database.sslmode"),
 //	    }
 //

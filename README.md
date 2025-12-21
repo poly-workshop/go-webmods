@@ -41,7 +41,7 @@ func main() {
         Port:     5432,
         Username: "user",
         Password: "password",
-        Name:     "mydb",
+        DbName:   "mydb",
         SSLMode:  "disable",
     })
 

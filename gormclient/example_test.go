@@ -16,7 +16,7 @@ func Example() {
 	// 	Port:     5432,
 	// 	Username: "user",
 	// 	Password: "password",
-	// 	Name:     "mydb",
+	// 	DbName:   "mydb",
 	// 	SSLMode:  "disable",
 	// })
 	//
@@ -33,7 +33,7 @@ func Example_sqlite() {
 	//
 	// db := gormclient.NewDB(gormclient.Config{
 	// 	Driver: "sqlite",
-	// 	Name:   "/tmp/test.db",
+	// 	DbName: "/tmp/test.db",
 	// })
 	//
 	// // Use the database connection
@@ -53,7 +53,7 @@ func Example_mysql() {
 	// 	Port:     3306,
 	// 	Username: "user",
 	// 	Password: "password",
-	// 	Name:     "mydb",
+	// 	DbName:   "mydb",
 	// })
 	//
 	// // Use the database connection
@@ -78,7 +78,7 @@ func Example_withConfig() {
 	//     Port:     cfg.GetInt("database.port"),
 	//     Username: cfg.GetString("database.username"),
 	//     Password: cfg.GetString("database.password"),
-	//     Name:     cfg.GetString("database.name"),
+	//     DbName:   cfg.GetString("database.name"),
 	//     SSLMode:  cfg.GetString("database.sslmode"),
 	// })
 
