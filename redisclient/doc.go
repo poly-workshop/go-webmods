@@ -44,16 +44,6 @@
 //	    Password: "password",
 //	})
 //
-// # Singleton Pattern (Deprecated)
-//
-// The legacy singleton pattern is still supported for backward compatibility:
-//
-//	redisclient.SetConfig([]string{"localhost:6379"}, "")
-//	rdb := redisclient.GetRDB()
-//
-// However, this pattern is deprecated. Use NewRDB instead for better control
-// and to support multiple clients.
-//
 // # Caching Layer
 //
 // The cache provides a two-level caching system:
@@ -94,11 +84,6 @@
 //	    err := cache.Delete(ctx, "user:123")
 //	}
 //
-// Singleton pattern cache creation (deprecated):
-//
-//	redisclient.SetConfig([]string{"localhost:6379"}, "")
-//	cache := redisclient.GetCache()
-//
 // # Multiple Cache Instances
 //
 // The factory pattern allows creating multiple independent cache instances:
@@ -127,24 +112,6 @@
 //   - Local caches are automatically invalidated
 //
 // This ensures cache consistency in distributed deployments.
-//
-// Customize the cache refresh channel name (must be done before GetCache):
-//
-//	redisclient.SetCacheRefreshEventChannel("myapp:cache:refresh")
-//	cache := redisclient.GetCache()
-//
-// # Singleton Pattern (Deprecated)
-//
-// The legacy GetRDB() and GetCache() functions use the singleton pattern:
-//   - First call initializes the client/cache
-//   - Subsequent calls return the same instance
-//   - Thread-safe initialization using sync.Once
-//
-// This means SetConfig() and SetCacheRefreshEventChannel() must be called
-// before the first GetRDB() or GetCache() call.
-//
-// For new code, prefer using NewRDB and NewCache instead for better control
-// and to support multiple independent clients.
 //
 // # Working with go-redis
 //
@@ -187,17 +154,20 @@
 //
 // Loading configuration:
 //
-//	import "github.com/poly-workshop/go-webmods/app"
+//	import (
+//	    "github.com/poly-workshop/go-webmods/app"
+//	    redisclient "github.com/poly-workshop/go-webmods/redisclient"
+//	)
 //
 //	app.Init(".")
-//	redisclient.SetConfig(
-//	    app.Config().GetStringSlice("redis.urls"),
-//	    app.Config().GetString("redis.password"),
-//	)
+//	rdb := redisclient.NewRDB(redisclient.Config{
+//	    Urls:     app.Config().GetStringSlice("redis.urls"),
+//	    Password: app.Config().GetString("redis.password"),
+//	})
 //
 // # Best Practices
 //
-//   - Use NewRDB and NewCache factory functions for new code (not the deprecated singleton pattern)
+//   - Use NewRDB and NewCache factory functions for creating clients
 //   - Create separate Redis clients for different purposes (e.g., cache, sessions, queues)
 //   - Use the cache for frequently accessed, slowly changing data
 //   - Set appropriate expiration times to balance freshness and performance
@@ -210,7 +180,6 @@
 //
 // - NewRDB panics if no Redis hosts are configured
 // - NewCache panics if Redis client is nil
-// - GetRDB panics if no Redis hosts are configured (deprecated singleton pattern)
 // - Cache operations return errors that should be handled:
 //
 //	err := cache.Get(ctx, key, &value)

@@ -3,23 +3,11 @@ package redisclient
 import (
 	"context"
 	"log/slog"
-	"sync"
 	"time"
 
 	"github.com/go-redis/cache/v9"
 	"github.com/redis/go-redis/v9"
 )
-
-var (
-	cacheRefreshEventChannel = "cacheRefreshEventChannel"
-	cacheInstance            *Cache
-	cacheInstanceOnce        sync.Once
-)
-
-// Customize name of the cache refresh event channel
-func SetCacheRefreshEventChannel(channel string) {
-	cacheRefreshEventChannel = channel
-}
 
 type Cache struct {
 	*cache.Cache
@@ -114,19 +102,7 @@ func NewCache(cfg CacheConfig) *Cache {
 	return cacheInstance
 }
 
-// GetCache returns the singleton cache instance.
-// The cache is initialized on first call using the configuration set by SetConfig.
-// Subsequent calls return the same instance (thread-safe).
-// Deprecated: Use NewCache instead for better control and to support multiple cache instances.
-func GetCache() *Cache {
-	cacheInstanceOnce.Do(func() {
-		cacheInstance = NewCache(CacheConfig{
-			Redis:               GetRDB(),
-			RefreshEventChannel: cacheRefreshEventChannel,
-		})
-	})
-	return cacheInstance
-}
+
 
 func (c *Cache) publishCacheRefreshEvent(ctx context.Context, key string) error {
 	return c.rdb.Publish(ctx, c.refreshEventChannel, key).Err()

@@ -141,34 +141,4 @@ func TestNewRDB(t *testing.T) {
 	})
 }
 
-func TestGetRDB_BackwardCompatibility(t *testing.T) {
-	addr, cleanup := startRedisContainer(t)
-	defer cleanup()
 
-	// Test backward compatibility with singleton pattern
-	redisclient.SetConfig([]string{addr}, "")
-	rdb := redisclient.GetRDB()
-
-	ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
-	defer cancel()
-
-	err := rdb.Set(ctx, "singleton_key", "singleton_value", time.Minute).Err()
-	if err != nil {
-		t.Fatalf("Failed to set key: %v", err)
-	}
-
-	val, err := rdb.Get(ctx, "singleton_key").Result()
-	if err != nil {
-		t.Fatalf("Failed to get key: %v", err)
-	}
-
-	if val != "singleton_value" {
-		t.Errorf("Expected value 'singleton_value', got '%s'", val)
-	}
-
-	// Test that subsequent calls return the same instance
-	rdb2 := redisclient.GetRDB()
-	if rdb != rdb2 {
-		t.Error("GetRDB should return the same singleton instance")
-	}
-}
