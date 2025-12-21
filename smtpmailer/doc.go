@@ -5,7 +5,7 @@
 //
 // Create a mailer and send an email:
 //
-//	import "github.com/poly-workshop/go-webmods/smtp_mailer"
+//	import smtp_mailer "github.com/poly-workshop/go-webmods/smtpmailer"
 //
 //	mailer := smtp_mailer.NewMailer(smtp_mailer.Config{
 //	    Host:      "smtp.gmail.com",
@@ -110,7 +110,7 @@
 //
 //	import (
 //	    "github.com/poly-workshop/go-webmods/app"
-//	    "github.com/poly-workshop/go-webmods/smtp_mailer"
+//	    "github.com/poly-workshop/go-webmods/smtpmailer"
 //	)
 //
 //	app.Init(".")

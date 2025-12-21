@@ -5,7 +5,7 @@
 //
 // Create a MongoDB client (recommended when you need explicit lifecycle management):
 //
-//	import "github.com/poly-workshop/go-webmods/mongo_client"
+//	import mongo_client "github.com/poly-workshop/go-webmods/mongoclient"
 //
 //	client := mongo_client.NewClient(mongo_client.Config{
 //	    URI:      "mongodb://localhost:27017",
@@ -31,7 +31,7 @@
 //
 //	import (
 //	    "github.com/poly-workshop/go-webmods/app"
-//	    "github.com/poly-workshop/go-webmods/mongo_client"
+//	    mongo_client "github.com/poly-workshop/go-webmods/mongoclient"
 //	)
 //
 //	func main() {

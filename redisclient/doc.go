@@ -6,7 +6,7 @@
 //
 // Create Redis clients using the factory pattern to support multiple independent clients:
 //
-//	import "github.com/poly-workshop/go-webmods/redis_client"
+//	import redis_client "github.com/poly-workshop/go-webmods/redisclient"
 //
 //	func main() {
 //	    // Create a Redis client
@@ -63,7 +63,7 @@
 //
 // Factory pattern cache creation (recommended):
 //
-//	import "github.com/poly-workshop/go-webmods/redis_client"
+//	import redis_client "github.com/poly-workshop/go-webmods/redisclient"
 //
 //	func main() {
 //	    rdb := redis_client.NewRDB(redis_client.Config{

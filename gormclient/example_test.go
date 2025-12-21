@@ -3,12 +3,12 @@ package gorm_client_test
 import (
 	"fmt"
 
-	_ "github.com/poly-workshop/go-webmods/gorm-client"
+	_ "github.com/poly-workshop/go-webmods/gormclient"
 )
 
 // Example demonstrates creating a PostgreSQL database connection.
 func Example() {
-	// import "github.com/poly-workshop/go-webmods/gorm_client"
+	// import gorm_client "github.com/poly-workshop/go-webmods/gormclient"
 	//
 	// db := gorm_client.NewDB(gorm_client.Config{
 	// 	Driver:   "postgres",
@@ -29,7 +29,7 @@ func Example() {
 
 // Example_sqlite demonstrates creating a SQLite database connection.
 func Example_sqlite() {
-	// import "github.com/poly-workshop/go-webmods/gorm_client"
+	// import gorm_client "github.com/poly-workshop/go-webmods/gormclient"
 	//
 	// db := gorm_client.NewDB(gorm_client.Config{
 	// 	Driver: "sqlite",
@@ -45,7 +45,7 @@ func Example_sqlite() {
 
 // Example_mysql demonstrates creating a MySQL database connection.
 func Example_mysql() {
-	// import "github.com/poly-workshop/go-webmods/gorm_client"
+	// import gorm_client "github.com/poly-workshop/go-webmods/gormclient"
 	//
 	// db := gorm_client.NewDB(gorm_client.Config{
 	// 	Driver:   "mysql",
@@ -67,7 +67,7 @@ func Example_mysql() {
 func Example_withConfig() {
 	// In a real application, you would load these from app.Config()
 	// import "github.com/poly-workshop/go-webmods/app"
-	// import "github.com/poly-workshop/go-webmods/gorm_client"
+	// import gorm_client "github.com/poly-workshop/go-webmods/gormclient"
 	//
 	// app.Init(".")
 	// cfg := app.Config()

@@ -13,7 +13,7 @@
 //
 //	import (
 //	    "log/slog"
-//	    "github.com/poly-workshop/go-webmods/grpc_utils"
+//	    grpc_utils "github.com/poly-workshop/go-webmods/grpcutils"
 //	    "google.golang.org/grpc"
 //	)
 //
@@ -55,7 +55,7 @@
 //	import (
 //	    "log/slog"
 //	    "github.com/poly-workshop/go-webmods/app"
-//	    "github.com/poly-workshop/go-webmods/grpc_utils"
+//	    grpc_utils "github.com/poly-workshop/go-webmods/grpcutils"
 //	    "google.golang.org/grpc"
 //	)
 //
@@ -172,7 +172,7 @@
 //	    "net"
 //	    "log/slog"
 //	    "github.com/poly-workshop/go-webmods/app"
-//	    "github.com/poly-workshop/go-webmods/grpc_utils"
+//	    grpc_utils "github.com/poly-workshop/go-webmods/grpcutils"
 //	    "google.golang.org/grpc"
 //	    "google.golang.org/grpc/health"
 //	    "google.golang.org/grpc/health/grpc_health_v1"

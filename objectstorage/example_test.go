@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"io"
 
-	object_storage "github.com/poly-workshop/go-webmods/object-storage"
+	object_storage "github.com/poly-workshop/go-webmods/objectstorage"
 )
 
 // Example demonstrates basic object storage usage with the local provider.

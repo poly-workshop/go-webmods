@@ -11,7 +11,7 @@
 //
 // Create a storage client:
 //
-//	import "github.com/poly-workshop/go-webmods/object_storage"
+//	import object_storage "github.com/poly-workshop/go-webmods/objectstorage"
 //
 //	storage, err := object_storage.NewObjectStorage(object_storage.Config{
 //	    ProviderType: object_storage.ProviderLocal,
@@ -146,7 +146,7 @@
 //
 //	import (
 //	    "github.com/poly-workshop/go-webmods/app"
-//	    "github.com/poly-workshop/go-webmods/object_storage"
+//	    object_storage "github.com/poly-workshop/go-webmods/objectstorage"
 //	)
 //
 //	app.Init(".")

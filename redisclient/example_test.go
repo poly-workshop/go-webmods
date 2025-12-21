@@ -3,7 +3,7 @@ package redis_client_test
 import (
 	"fmt"
 
-	_ "github.com/poly-workshop/go-webmods/redis-client"
+	_ "github.com/poly-workshop/go-webmods/redisclient"
 )
 
 // Example demonstrates basic Redis client usage.
@@ -36,7 +36,7 @@ func Example() {
 
 // Example_cluster demonstrates Redis cluster configuration.
 func Example_cluster() {
-	// import "github.com/poly-workshop/go-webmods/redis_client"
+	// import redis_client "github.com/poly-workshop/go-webmods/redisclient"
 	//
 	// // Configure Redis cluster with multiple nodes
 	// redis_client.SetConfig(

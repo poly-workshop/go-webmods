@@ -35,7 +35,7 @@
 //
 // 2. Initialize components using their factory functions:
 //
-//	import "github.com/poly-workshop/go-webmods/gorm_client"
+//	import gorm_client "github.com/poly-workshop/go-webmods/gormclient"
 //
 //	db := gorm_client.NewDB(gorm_client.Config{
 //	    Driver:   "postgres",
@@ -87,8 +87,8 @@
 //	import (
 //	    "log/slog"
 //	    "github.com/poly-workshop/go-webmods/app"
-//	    "github.com/poly-workshop/go-webmods/gorm_client"
-//	    "github.com/poly-workshop/go-webmods/redis_client"
+//	    gorm_client "github.com/poly-workshop/go-webmods/gormclient"
+//	    redis_client "github.com/poly-workshop/go-webmods/redisclient"
 //	)
 //
 //	func main() {

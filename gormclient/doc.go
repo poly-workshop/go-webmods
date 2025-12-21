@@ -10,7 +10,7 @@
 //
 // Create a PostgreSQL connection:
 //
-//	import "github.com/poly-workshop/go-webmods/gorm_client"
+//	import gorm_client "github.com/poly-workshop/go-webmods/gormclient"
 //
 //	db := gorm_client.NewDB(gorm_client.Config{
 //	    Driver:   "postgres",
@@ -37,7 +37,7 @@
 //
 //	import (
 //	    "github.com/poly-workshop/go-webmods/app"
-//	    "github.com/poly-workshop/go-webmods/gorm_client"
+//	    gorm_client "github.com/poly-workshop/go-webmods/gormclient"
 //	)
 //
 //	func main() {

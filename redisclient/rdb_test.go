@@ -5,7 +5,7 @@ import (
 	"testing"
 	"time"
 
-	redis_client "github.com/poly-workshop/go-webmods/redis-client"
+	redis_client "github.com/poly-workshop/go-webmods/redisclient"
 	"github.com/testcontainers/testcontainers-go"
 	"github.com/testcontainers/testcontainers-go/wait"
 )
