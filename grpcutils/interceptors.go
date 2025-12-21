@@ -6,7 +6,7 @@ import (
 
 	"github.com/google/uuid"
 	"github.com/grpc-ecosystem/go-grpc-middleware/v2/interceptors/logging"
-	"github.com/oj-lab/go-webmods/app"
+	"github.com/poly-workshop/go-webmods/app"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/metadata"
 )
