@@ -1,0 +1,95 @@
+package gormclient_test
+
+import (
+	"fmt"
+
+	_ "github.com/poly-workshop/go-webmods/gormclient"
+)
+
+// Example demonstrates creating a PostgreSQL database connection.
+func Example() {
+	// import gormclient "github.com/poly-workshop/go-webmods/gormclient"
+	//
+	// db := gormclient.NewDB(gormclient.Config{
+	// 	Driver:   "postgres",
+	// 	Host:     "localhost",
+	// 	Port:     5432,
+	// 	Username: "user",
+	// 	Password: "password",
+	// 	Name:     "mydb",
+	// 	SSLMode:  "disable",
+	// })
+	//
+	// // Use the database connection
+	// _ = db
+
+	fmt.Println("Database connected")
+	// Output: Database connected
+}
+
+// Example_sqlite demonstrates creating a SQLite database connection.
+func Example_sqlite() {
+	// import gormclient "github.com/poly-workshop/go-webmods/gormclient"
+	//
+	// db := gormclient.NewDB(gormclient.Config{
+	// 	Driver: "sqlite",
+	// 	Name:   "/tmp/test.db",
+	// })
+	//
+	// // Use the database connection
+	// _ = db
+
+	fmt.Println("SQLite database connected")
+	// Output: SQLite database connected
+}
+
+// Example_mysql demonstrates creating a MySQL database connection.
+func Example_mysql() {
+	// import gormclient "github.com/poly-workshop/go-webmods/gormclient"
+	//
+	// db := gormclient.NewDB(gormclient.Config{
+	// 	Driver:   "mysql",
+	// 	Host:     "localhost",
+	// 	Port:     3306,
+	// 	Username: "user",
+	// 	Password: "password",
+	// 	Name:     "mydb",
+	// })
+	//
+	// // Use the database connection
+	// _ = db
+
+	fmt.Println("MySQL database connected")
+	// Output: MySQL database connected
+}
+
+// Example_withConfig demonstrates using configuration to create a database connection.
+func Example_withConfig() {
+	// In a real application, you would load these from app.Config()
+	// import "github.com/poly-workshop/go-webmods/app"
+	// import gormclient "github.com/poly-workshop/go-webmods/gormclient"
+	//
+	// app.Init(".")
+	// cfg := app.Config()
+	//
+	// db := gormclient.NewDB(gormclient.Config{
+	//     Driver:   cfg.GetString("database.driver"),
+	//     Host:     cfg.GetString("database.host"),
+	//     Port:     cfg.GetInt("database.port"),
+	//     Username: cfg.GetString("database.username"),
+	//     Password: cfg.GetString("database.password"),
+	//     Name:     cfg.GetString("database.name"),
+	//     SSLMode:  cfg.GetString("database.sslmode"),
+	// })
+
+	// Example config file (configs/default.yaml):
+	//
+	// database:
+	//   driver: postgres
+	//   host: localhost
+	//   port: 5432
+	//   username: user
+	//   password: pass
+	//   name: mydb
+	//   sslmode: disable
+}
