@@ -7,7 +7,6 @@ require (
 	github.com/google/uuid v1.6.0
 	github.com/grpc-ecosystem/go-grpc-middleware/v2 v2.3.2
 	github.com/lmittmann/tint v1.1.2
-	github.com/oj-lab/go-webmods v0.1.4
 	github.com/redis/go-redis/v9 v9.12.1
 	github.com/segmentio/kafka-go v0.4.48
 	github.com/spf13/viper v1.20.1
